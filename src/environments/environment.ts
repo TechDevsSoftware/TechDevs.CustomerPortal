@@ -5,8 +5,8 @@
 
 export const environment = {
   production: false,
-  accountServer: "http://localhost:5101",
-  identityServer: "http://localhost:5100",
-  clientAddress: "http://localhost:4200",
-  identityClientId: "dev-customer-portal"
+  accountServer: 'http://localhost:5101',
+  identityServer: 'http://localhost:5100',
+  clientAddress: 'http://localhost:4200',
+  identityClientId: 'dev-customer-portal'
 };

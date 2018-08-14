@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { AuthService, GoogleLoginProvider, SocialUser } from "angularx-social-login";
-import { UserProfile } from "../models/auth.models";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
+import { UserProfile } from '../models/auth.models';
 
 export class LoginRequest {
   provider?: string;
@@ -21,31 +21,32 @@ export class TechDevsAuthService {
   ) { }
 
   async loginWithEmail(email: string, password: string) {
-    const provider: string = "TechDevs";
-    const loginRequest: LoginRequest = { provider: "TechDevs", email: email, password: password };
+    const provider = 'TechDevs';
+    const loginRequest: LoginRequest = { provider: 'TechDevs', email: email, password: password };
     const token = await this.httpClient.post<string>(`http://localhost:5101/api/auth/login`, loginRequest, {}).toPromise();
     this.setLocalToken(token);
-    console.log("Logged in");
+    console.log('Logged in');
   }
 
   async loginWithGoogle() {
-    const provider: string = "Google";
+    console.log('Logging in with Google');
+    const provider = 'Google';
     let user: SocialUser;
     try {
       user = await this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
     } catch (error) {
-      console.log("Error signing into Goolge");
+      console.log('Error signing into Goolge');
       return null;
     }
     const idToken = user.idToken;
     const loginRequest: LoginRequest = { provider: provider, providerIdToken: idToken };
     const token = await this.httpClient.post<string>(`http://localhost:5101/api/auth/login`, loginRequest, {}).toPromise();
     this.setLocalToken(token);
-    console.log("Logged in");
+    console.log('Logged in');
   }
 
   loginWithFacebook() {
-    const provider: string = "Facebook";
+    const provider = 'Facebook';
   }
 
   authState() {
