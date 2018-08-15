@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserProfile } from '../models/auth.models';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 export class LoginRequest {
   provider?: string;
@@ -26,7 +27,7 @@ export class TechDevsAuthService {
     this.logout();
     const provider = 'TechDevs';
     const loginRequest: LoginRequest = { provider: 'TechDevs', email: email, password: password };
-    const token = await this.httpClient.post<string>(`http://localhost:5101/api/auth/login`, loginRequest, {}).toPromise();
+    const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
     this.onSuccessfulLogin(token);
   }
 
@@ -43,7 +44,7 @@ export class TechDevsAuthService {
     }
     const idToken = user.idToken;
     const loginRequest: LoginRequest = { provider: provider, providerIdToken: idToken };
-    const token = await this.httpClient.post<string>(`http://localhost:5101/api/auth/login`, loginRequest, {}).toPromise();
+    const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
     this.onSuccessfulLogin(token);
   }
 
@@ -93,7 +94,7 @@ export class TechDevsAuthService {
 
   private async setUserProfile() {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    const user = await this.httpClient.get<UserProfile>(`http://localhost:5101/api/v1/account`, { headers: headers }).toPromise();
+    const user = await this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/account`, { headers: headers }).toPromise();
     this.user = user;
   }
 
