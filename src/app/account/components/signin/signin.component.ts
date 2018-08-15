@@ -10,6 +10,7 @@ export class SigninComponent implements OnInit {
 
   email: string;
   password: string;
+  errMessage: string;
 
   constructor(
     private authService: TechDevsAuthService
@@ -22,12 +23,17 @@ export class SigninComponent implements OnInit {
   }
 
   async login() {
-    await this.authService.loginWithEmail(this.email, this.password);
-    console.log("Logged In");
+    const response = await this.authService.loginWithEmail(this.email, this.password);
+    if (response != "Success") {
+      this.errMessage = response;
+    }
   }
 
   async loginWithGoogle() {
-    await this.authService.loginWithGoogle();
+    const response = await this.authService.loginWithGoogle();
+    if (response != "Success") {
+      this.errMessage = response;
+    }
   }
 
 }

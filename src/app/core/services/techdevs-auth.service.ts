@@ -21,15 +21,24 @@ export class TechDevsAuthService {
     private router: Router
   ) { }
 
-  async loginWithEmail(email: string, password: string) {
+  async loginWithEmail(email: string, password: string): Promise<string> {
     this.logout();
     const provider = 'TechDevs';
     const loginRequest: LoginRequest = { provider: 'TechDevs', email: email, password: password };
-    const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
-    this.onSuccessfulLogin(token);
+    try {
+      const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
+      this.onSuccessfulLogin(token);
+      return "Success";
+    } catch (error) {
+      if (error.status == 401) {
+        return "Invalid credentials";
+      }
+      return "Could not log in. Please try again";
+      // console.log(error);
+    }
   }
 
-  async loginWithGoogle() {
+  async loginWithGoogle(): Promise<string> {
     this.logout();
     console.log('Logging in with Google');
     const provider = 'Google';
@@ -37,13 +46,14 @@ export class TechDevsAuthService {
     try {
       user = await this.socialAuth.signIn(GoogleLoginProvider.PROVIDER_ID);
     } catch (error) {
-      console.log('Error signing into Goolge');
-      return null;
+      console.log('Error signing in with Goolge');
+      return "Error signing in with Google";
     }
     const idToken = user.idToken;
     const loginRequest: LoginRequest = { provider: provider, providerIdToken: idToken };
     const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
     this.onSuccessfulLogin(token);
+    return "Success";
   }
 
   loginWithFacebook() {
