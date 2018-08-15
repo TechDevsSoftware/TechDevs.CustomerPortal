@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
   title = 'app';
   isLoggedIn = false;
 
-  user: any;
-  loggedIn: boolean;
   email: string;
   password: string;
 
@@ -27,10 +25,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.authState().subscribe((user) => {
-      this.loggedIn = (user != null);
-      this.user = user;
-    });
   }
 
   signinWithEmail() {
@@ -41,7 +35,7 @@ export class AppComponent implements OnInit {
     this.authService.loginWithGoogle();
   }
 
-  signout() {
+  logout() {
     this.authService.logout();
   }
 }

@@ -1,0 +1,12 @@
+<p>
+  profile works!
+</p>
+
+<div *ngIf="user">
+  <pre>
+    {{user | json }}
+  </pre>
+</div>
+
+
+<button (click)="getProfile()">Get Profile</button>

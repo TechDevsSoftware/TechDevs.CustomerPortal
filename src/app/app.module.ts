@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 import { getAuthServiceConfigs } from "./socialloginConfig";
+import { AccountModule } from './account/account.module';
 
 let config = new AuthServiceConfig([
   {
@@ -29,11 +30,12 @@ export function provideConfig() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([]),
     PolicyModule,
+    RouterModule.forRoot([]),
     CoreModule,
     SocialLoginModule,
-    FormsModule
+    FormsModule,
+    AccountModule,
   ],
   providers: [
     {
