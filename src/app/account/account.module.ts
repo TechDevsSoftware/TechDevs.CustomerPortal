@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SigninComponent } from './components/signin/signin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { FormsModule } from '@angular/forms';
   ],
   declarations: [
     SigninComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent
   ]
 })
 export class AccountModule { }

@@ -35,3 +35,12 @@ export class MOTResult {
   odometerResultType: string;
   motTestNumber: string;
 }
+
+export class UserRegistration {
+  firstName: string;
+  lastName: string;
+  emailAddress: string;
+  aggreedToTerms: string;
+  provider: string;
+  password: string;
+}

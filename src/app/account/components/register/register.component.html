@@ -1,0 +1,53 @@
+<div class="login-container">
+
+
+  <form class="form-signin" (ngSubmit)="register()" *ngIf="reg">
+    <img class="mb-4 center" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
+
+    <div class="alert alert-danger" role="alert" *ngIf="errMessage">
+      {{errMessage}}
+    </div>
+    <div class="forn-group row">
+      <label for="firstName" class="sr-only">First Name</label>
+      <input type="text" id="firstName" class="form-control" placeholder="First Name" required autofocus autocomplete="new-password"
+        [(ngModel)]="reg.firstName" name="firstName">
+    </div>
+
+    <div class="forn-group row">
+      <label for="lastName" class="sr-only">Last Name</label>
+      <input type="text" id="lastName" class="form-control" placeholder="Last Name" required autofocus autocomplete="new-password"
+        [(ngModel)]="reg.lastName" name="lastName">
+    </div>
+
+    <div class="forn-group row">
+      <label for="email" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="new-password"
+        [(ngModel)]="reg.emailAddress" name="email">
+    </div>
+
+    <div class="forn-group row">
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" class="form-control" placeholder="Password" required autofocus autocomplete="new-password"
+        [(ngModel)]="reg.password" name="password">
+    </div>
+
+    <div class="forn-group row">
+      <label for="confirmPassword" class="sr-only">Confirm Password</label>
+      <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required autofocus autocomplete="new-password"
+        [(ngModel)]="confirmPassword" name="confirmPassword">
+    </div>
+
+    <div class="forn-group row">
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" [(ngModel)]="reg.aggreedToTerms" name="agrreedToTerms"> Agree to Terms & Conditions
+        </label>
+      </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    <p class="mt-5 mb-3 text-muted">&copy; TechDevs 2018</p>
+  </form>
+
+</div>

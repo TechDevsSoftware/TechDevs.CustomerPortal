@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TechDevsAuthService } from './services/techdevs-auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AccountModule } from '../account/account.module';
+import { TechDevsAccountsService } from './services/techdevs-accounts.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { AccountModule } from '../account/account.module';
   ],
   providers: [
     TechDevsAuthService,
+    TechDevsAccountsService,
     AuthGuard
   ]
 })

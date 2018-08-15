@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,8 @@ export class SigninComponent implements OnInit {
   errMessage: string;
 
   constructor(
-    private authService: TechDevsAuthService
+    private authService: TechDevsAuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,10 @@ export class SigninComponent implements OnInit {
     if (response != "Success") {
       this.errMessage = response;
     }
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 
 }
