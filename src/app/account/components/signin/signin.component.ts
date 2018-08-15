@@ -16,6 +16,9 @@ export class SigninComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.authService.isLoggedIn) {
+      this.authService.redirectToProfile();
+    }
   }
 
   async login() {

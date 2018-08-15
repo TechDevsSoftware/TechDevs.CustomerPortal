@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../core/services/techdevs-auth.service';
+import { Spinkit } from 'ng-http-loader';
 
 export class LoginStatus {
   isLoggedIn: boolean;
@@ -14,6 +15,7 @@ export class LoginStatus {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  public spinkit = Spinkit;
   title = 'app';
   isLoggedIn = false;
 

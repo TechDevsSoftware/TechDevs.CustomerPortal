@@ -15,8 +15,6 @@ export class LoginRequest {
 @Injectable()
 export class TechDevsAuthService {
 
-  private user: UserProfile;
-
   constructor(
     private httpClient: HttpClient,
     private socialAuth: AuthService,
@@ -58,26 +56,28 @@ export class TechDevsAuthService {
 
   logout() {
     this.clearLocalToken();
-    this.clearUserProfile();
+    this.redirectToLogin();
+  }
+
+  redirectToLogin() {
     this.router.navigate(['/signin']);
   }
 
+  redirectToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
   get isLoggedIn(): boolean {
-    return (this.token !== null && this.user !== null);
+    return (this.token !== null);
   }
 
   get token(): string {
     return window.localStorage.getItem('techdevs-auth-token');
   }
 
-  get userProfile(): UserProfile {
-    return this.user;
-  }
-
   private async onSuccessfulLogin(token: string) {
     this.setLocalToken(token);
-    await this.setUserProfile();
-    this.router.navigate(['/profile']);
+    this.redirectToProfile();
   }
 
   private setLocalToken(token: string) {
@@ -87,15 +87,9 @@ export class TechDevsAuthService {
   private clearLocalToken() {
     window.localStorage.removeItem('techdevs-auth-token');
   }
-
-  private async clearUserProfile() {
-    this.user = null;
-  }
-
-  private async setUserProfile() {
+  async getUserProfile(): Promise<UserProfile> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    const user = await this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/account`, { headers: headers }).toPromise();
-    this.user = user;
+    return this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/account`, { headers: headers }).toPromise();
   }
 
 }

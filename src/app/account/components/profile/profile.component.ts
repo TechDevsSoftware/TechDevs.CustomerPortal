@@ -15,8 +15,13 @@ export class ProfileComponent implements OnInit {
     private authService: TechDevsAuthService
   ) { }
 
-  ngOnInit() {
-    this.user = this.authService.userProfile;
+  async ngOnInit() {
+    this.user = await this.authService.getUserProfile();
+    console.log(this.user);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { CoreModule } from './core/core.module';
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { NgHttpLoaderModule } from "ng-http-loader";
 import { getAuthServiceConfigs } from "./socialloginConfig";
 import { AccountModule } from './account/account.module';
 
@@ -36,6 +37,7 @@ export function provideConfig() {
     SocialLoginModule,
     FormsModule,
     AccountModule,
+    NgHttpLoaderModule
   ],
   providers: [
     {

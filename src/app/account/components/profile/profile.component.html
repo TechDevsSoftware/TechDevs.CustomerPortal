@@ -1,11 +1,16 @@
-<p>
-  profile works!
-</p>
+<div class="container">
 
-<div *ngIf="user">
-  <pre>
-    {{user | json }}
-  </pre>
+  <p>
+    profile works!
+  </p>
+
+  <button (click)="logout()">Logout</button>
+
+  <div *ngIf=" user ">
+    <pre>
+      {{user | json }}
+    </pre>
+  </div>
+
+
 </div>
-
-
