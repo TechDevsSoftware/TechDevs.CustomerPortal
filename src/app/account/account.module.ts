@@ -4,6 +4,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
+import { RouterNavService } from '../core/services/router-nav.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { RegisterComponent } from './components/register/register.component';
     SigninComponent,
     ProfileComponent,
     RegisterComponent
+  ],
+  providers: [
+    RouterNavService
   ]
 })
 export class AccountModule { }

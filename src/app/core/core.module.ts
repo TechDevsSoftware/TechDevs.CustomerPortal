@@ -5,6 +5,7 @@ import { TechDevsAuthService } from './services/techdevs-auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AccountModule } from '../account/account.module';
 import { TechDevsAccountsService } from './services/techdevs-accounts.service';
+import { RouterNavService } from './services/router-nav.service';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { TechDevsAccountsService } from './services/techdevs-accounts.service';
   providers: [
     TechDevsAuthService,
     TechDevsAccountsService,
-    AuthGuard
+    AuthGuard,
+    RouterNavService
   ]
 })
 export class CoreModule { }

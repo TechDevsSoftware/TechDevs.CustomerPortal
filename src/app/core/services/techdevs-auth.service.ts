@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserProfile } from '../models/auth.models';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { RouterNavService } from './router-nav.service';
 
 export class LoginRequest {
   provider?: string;
@@ -18,15 +19,15 @@ export class TechDevsAuthService {
   constructor(
     private httpClient: HttpClient,
     private socialAuth: AuthService,
-    private router: Router
+    private routerNav: RouterNavService
   ) { }
 
   async loginWithEmail(email: string, password: string): Promise<string> {
     this.logout();
     const provider = 'TechDevs';
-    const loginRequest: LoginRequest = { provider: 'TechDevs', email: email, password: password };
+    const loginRequest: LoginRequest = { provider: provider, email: email, password: password };
     try {
-      const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
+      const token = await this.httpClient.post<string>(`${environment.accountServer}/api/v1/customer/auth/login`, loginRequest, {}).toPromise();
       this.onSuccessfulLogin(token);
       return "Success";
     } catch (error) {
@@ -51,7 +52,7 @@ export class TechDevsAuthService {
     }
     const idToken = user.idToken;
     const loginRequest: LoginRequest = { provider: provider, providerIdToken: idToken };
-    const token = await this.httpClient.post<string>(`${environment.accountServer}/api/auth/login`, loginRequest, {}).toPromise();
+    const token = await this.httpClient.post<string>(`${environment.accountServer}/api/v1/customer/auth/login`, loginRequest, {}).toPromise();
     this.onSuccessfulLogin(token);
     return "Success";
   }
@@ -70,11 +71,11 @@ export class TechDevsAuthService {
   }
 
   redirectToLogin() {
-    this.router.navigate(['/signin']);
+    this.routerNav.navigate(['login']);
   }
 
   redirectToProfile() {
-    this.router.navigate(['/profile']);
+    this.routerNav.navigate(['profile']);
   }
 
   get isLoggedIn(): boolean {
@@ -99,7 +100,7 @@ export class TechDevsAuthService {
   }
   async getUserProfile(): Promise<UserProfile> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/account`, { headers: headers }).toPromise();
+    return this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/customer/account`, { headers: headers }).toPromise();
   }
 
 }

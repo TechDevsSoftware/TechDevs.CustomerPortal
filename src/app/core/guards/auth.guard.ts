@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { AuthService } from 'angularx-social-login';
 import { TechDevsAuthService } from '../services/techdevs-auth.service';
+import { RouterNavService } from '../services/router-nav.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   constructor(
     private authService: TechDevsAuthService,
-    private router: Router
+    private routerNav: RouterNavService
   ) {
 
   }
@@ -22,7 +21,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ): any {
 
     if (!this.authService.isLoggedIn) {
-      this.router.navigate(['/signin']);
+      this.routerNav.navigate(['/login']);
       return false;
     }
 

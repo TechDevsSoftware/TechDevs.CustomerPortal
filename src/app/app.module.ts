@@ -12,6 +12,9 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLogi
 import { NgHttpLoaderModule } from "ng-http-loader";
 import { getAuthServiceConfigs } from "./socialloginConfig";
 import { AccountModule } from './account/account.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ClientKeyInterceptor } from './core/interceptors/clientkey.interceptor';
+import { RouterNavService } from './core/services/router-nav.service';
 
 let config = new AuthServiceConfig([
   {
@@ -43,6 +46,11 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ClientKeyInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

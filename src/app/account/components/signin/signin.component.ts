@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
-import { Router } from '@angular/router';
+import { RouterNavService } from '../../../core/services/router-nav.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,7 +15,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private authService: TechDevsAuthService,
-    private router: Router
+    private nav: RouterNavService
   ) { }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
   }
 
   goToRegister() {
-    this.router.navigate(['/register']);
+    this.nav.navigate(['register']);
   }
 
 }
