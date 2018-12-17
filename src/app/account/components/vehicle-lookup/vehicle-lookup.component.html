@@ -1,0 +1,11 @@
+<p>
+  vehicle-lookup works!
+</p>
+
+<input type="text" [(ngModel)]="reg" class="form-input">
+<button class="btn btn-primary" (click)="search()">Search</button>
+
+<div *ngIf="result">
+  <h5>{{result.make}} {{result.model}}</h5>
+  <button type="button" class="btn btn-success" (click)="addToMyCars()">Add To My Cars</button>
+</div>

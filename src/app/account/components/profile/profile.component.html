@@ -1,16 +1,14 @@
-<div class="container">
+<div class="profile-page">
 
-  <p>
-    profile works!
-  </p>
-
-  <button (click)="logout()">Logout</button>
-
-  <div *ngIf=" user ">
-    <pre>
-      {{user | json }}
-    </pre>
+  <div class="profile-banner">
+    <img src="http://www.pswca.org/images/skins/bg-banner-blue.png" alt="">
+    <span class="profile-title">{{user?.firstName}} {{user?.lastName}}</span>
   </div>
 
-
+  
+  <div class="profile-body">
+    <router-outlet></router-outlet>  
+  </div>
+    
 </div>
+

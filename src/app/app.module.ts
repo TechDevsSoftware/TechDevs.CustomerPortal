@@ -10,11 +10,10 @@ import { CoreModule } from './core/core.module';
 
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 import { NgHttpLoaderModule } from "ng-http-loader";
-import { getAuthServiceConfigs } from "./socialloginConfig";
 import { AccountModule } from './account/account.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClientKeyInterceptor } from './core/interceptors/clientkey.interceptor';
-import { RouterNavService } from './core/services/router-nav.service';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 let config = new AuthServiceConfig([
   {
@@ -50,6 +49,11 @@ export function provideConfig() {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClientKeyInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],

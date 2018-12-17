@@ -1,0 +1,12 @@
+<p>
+  my-cars-list works!
+</p>
+
+<ul>
+  <li *ngFor="let car of cars">
+    <button class="btn btn-sm btn-danger" type="button" (click)="deleteVehicle(car.registration)"><i class="fa fa-trash"></i></button>  
+    {{car.make}} {{car.model}}  
+  </li>
+</ul>
+
+<app-vehicle-lookup (onCarAdded)="loadData()"></app-vehicle-lookup>

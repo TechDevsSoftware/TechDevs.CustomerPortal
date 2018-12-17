@@ -5,7 +5,7 @@ export class UserProfile {
   emailAddress: string;
   agreedToTerms: boolean;
   validatedEmail: boolean;
-  userData: UserData;
+  customerData: UserData;
 }
 
 export class UserData {

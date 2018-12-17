@@ -5,16 +5,24 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterNavService } from '../core/services/router-nav.service';
+import { MyCarsListComponent } from './components/my-cars-list/my-cars-list.component';
+import { RouterModule } from '@angular/router';
+import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
+import { VehicleLookupComponent } from './components/vehicle-lookup/vehicle-lookup.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   declarations: [
     SigninComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    MyCarsListComponent,
+    ProfileMenuComponent,
+    VehicleLookupComponent
   ],
   providers: [
     RouterNavService

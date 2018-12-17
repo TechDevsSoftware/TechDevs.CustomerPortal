@@ -5,6 +5,8 @@ import { SigninComponent } from './account/components/signin/signin.component';
 import { ProfileComponent } from './account/components/profile/profile.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { RegisterComponent } from './account/components/register/register.component';
+import { MyCarsListComponent } from './account/components/my-cars-list/my-cars-list.component';
+import { ProfileMenuComponent } from './account/components/profile-menu/profile-menu.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,12 @@ const routes: Routes = [
       { path: '', component: SigninComponent },
       { path: 'login', component: SigninComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+      {
+        path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
+          { path: '', component: ProfileMenuComponent },
+          { path: 'cars', component: MyCarsListComponent }
+        ]
+      },
       { path: "policy/privacy", component: PrivacyPolicyComponent }
     ]
   }

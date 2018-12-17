@@ -1,0 +1,31 @@
+.profile-page {
+
+    // display: flex;
+    width: 100%;
+
+    .profile-banner {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        color: white;
+        z-index: -1;
+        
+        img {
+            width: 100%
+        }
+
+        .profile-title {
+            // position: relative;
+            font-size: 3em;
+            z-index: 999;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .profile-body {
+        margin: 20px;
+    }
+}
