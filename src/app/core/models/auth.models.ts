@@ -50,3 +50,24 @@ export class UserRegistration {
   provider: string;
   password: string;
 }
+
+
+export class TechDevsClient {
+
+  id: string;
+  name: string;
+  siteUrl: string;
+  clientApiKey: string;
+  shortKey: string;
+  clientTheme: ClientTheme;
+}
+
+export class ClientTheme {
+  font: string;
+  primaryColour: string;
+  secondaryColour: string;
+  warningColour: string;
+  dangerColour: string;
+  logoPath: string;
+  logoData: Blob;
+}

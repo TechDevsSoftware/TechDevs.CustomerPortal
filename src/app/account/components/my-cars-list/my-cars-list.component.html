@@ -3,7 +3,8 @@
 <ul>
   <li *ngFor="let car of cars">
     <!-- <button class="btn btn-sm btn-danger" type="button" (click)="deleteVehicle(car.registration)"><i class="fa fa-trash"></i></button>   -->
-    <button class="btn btn-sm btn-warning" (click)="vehicleDetails(car.registration)">{{car.registration}}</button> {{car.make}} {{car.model}}
+    <button class="btn btn-sm btn-warning" (click)="vehicleDetails(car.registration)">{{car.registration}}</button>
+    {{car.make}} {{car.model}}
   </li>
 </ul>
 

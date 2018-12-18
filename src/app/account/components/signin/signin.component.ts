@@ -1,27 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef, Inject, Renderer2 } from '@angular/core';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
 import { RouterNavService } from '../../../core/services/router-nav.service';
+import { ClientService } from '../../../core/services/techdevs-client.service';
+import { TechDevsClient } from '../../../core/models/auth.models';
+import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { _document } from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SigninComponent implements OnInit {
+
+  @Inject(DOCUMENT) private _document: any
 
   email: string;
   password: string;
   errMessage: string;
+  client: TechDevsClient;
 
   constructor(
     private authService: TechDevsAuthService,
-    private nav: RouterNavService
-  ) { }
+    private nav: RouterNavService,
+    private clientService: ClientService,
+    private router: Router,
+    private _elementRef: ElementRef,
+    private renderer: Renderer2
+  ) {
+    // this.renderer.setElementClass(document.body, 'modal-open', false);
+    // this.renderer.selectRootElement();
+  }
 
-  ngOnInit() {
+
+  async ngOnInit() {
+    await this.loadClientData();
+    if (!this.client) {
+      this.router.navigate(['invalid-client']);
+    }
     if (this.authService.isLoggedIn) {
       this.authService.redirectToProfile();
     }
+    const html = document.getElementsByTagName('html');
+    html[0].style.setProperty('--td-primary', this.client.clientTheme.primaryColour);
+    // html[0].style.setProperty('--primary', '#ff7800');
+  }
+
+  async loadClientData() {
+    this.client = await this.clientService.getClient();
   }
 
   async login() {

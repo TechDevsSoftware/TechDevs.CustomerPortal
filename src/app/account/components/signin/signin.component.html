@@ -1,29 +1,20 @@
-<div class="login-container">
+<div class="page">
+  <div class="login">
+    <img class="brand-image" [src]="client?.clientTheme?.logoPath" />
 
+    <span class="login-title">Sign In</span>
 
-  <form class="form-signin" (ngSubmit)="login()">
-    <img class="mb-4 center" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
+    <form (submit)="login()">
 
-    <div class="alert alert-danger" role="alert" *ngIf="errMessage">
-      {{errMessage}}
-    </div>
+      <input type="text" name="email" [(ngModel)]="email" placeholder="Email Address">
+      <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
 
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="off"
-      [(ngModel)]="email" name="email">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off" [(ngModel)]="password"
-      name="password">
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="loginWithGoogle()">Sign in With Google</button>
-    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="goToRegister()" routerLink="/register">Register</button>
-    <p class="mt-5 mb-3 text-muted">&copy; TechDevs 2018</p>
-  </form>
+      <button type="submit" class="login-btn">LOG IN</button>
+      
+      <hr>
 
-</div>
+      <button type="button" class="login-btn login-btn-google" (click)="loginWithGoogle()"> <i class="fa fa-google btn-icon"></i> SIGN IN WITH GOOGLE</button>
+
+    </form>
+
+  </div>

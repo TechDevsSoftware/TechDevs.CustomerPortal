@@ -1,25 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/dist/css/bootstrap-grid.css";
 @import "~font-awesome/css/font-awesome.css";
+// @import "./assets/styles/bootstrap-dynamic.css";
+// @import "./assets/styles/mini.css";
 
-html {
-    font-size: 1rem;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+app-root {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    margin: 0 !important;
+  }
+  html {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+  }
+
+
+  :root {
+    --td-primary: blue;
   }
   
-  @include media-breakpoint-up(sm) {
-    html {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @include media-breakpoint-up(md) {
-    html {
-      font-size: 1.2rem;
-    }
-  }
-  
-  @include media-breakpoint-up(lg) {
-    html {
-      font-size: 1.4rem;
-    }
-  }

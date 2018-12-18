@@ -8,8 +8,10 @@ import { RegisterComponent } from './account/components/register/register.compon
 import { MyCarsListComponent } from './account/components/my-cars-list/my-cars-list.component';
 import { ProfileMenuComponent } from './account/components/profile-menu/profile-menu.component';
 import { VehicleDetailsComponent } from './account/components/vehicle-details/vehicle-details.component';
+import { InvalidClientComponent } from './account/components/invalid-client/invalid-client.component';
 
 const routes: Routes = [
+  {path: 'invalid-client', component: InvalidClientComponent},
   {
     path: 'dealership/:clientKey', children: [
       { path: '', component: SigninComponent },

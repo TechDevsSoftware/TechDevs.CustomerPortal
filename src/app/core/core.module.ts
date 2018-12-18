@@ -7,6 +7,7 @@ import { AccountModule } from '../account/account.module';
 import { TechDevsAccountsService } from './services/techdevs-accounts.service';
 import { RouterNavService } from './services/router-nav.service';
 import { VehicleService } from './services/techdevs-vehicle.service';
+import { ClientService } from './services/techdevs-client.service';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { VehicleService } from './services/techdevs-vehicle.service';
     TechDevsAccountsService,
     AuthGuard,
     RouterNavService,
-    VehicleService
+    VehicleService,
+    ClientService
   ]
 })
 export class CoreModule { }

@@ -11,6 +11,7 @@ import { ProfileMenuComponent } from './components/profile-menu/profile-menu.com
 import { VehicleLookupComponent } from './components/vehicle-lookup/vehicle-lookup.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 import { MomentModule } from "ngx-moment";
+import { InvalidClientComponent } from './components/invalid-client/invalid-client.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MomentModule } from "ngx-moment";
     MyCarsListComponent,
     ProfileMenuComponent,
     VehicleLookupComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    InvalidClientComponent
   ],
   providers: [
     RouterNavService
