@@ -7,6 +7,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { RegisterComponent } from './account/components/register/register.component';
 import { MyCarsListComponent } from './account/components/my-cars-list/my-cars-list.component';
 import { ProfileMenuComponent } from './account/components/profile-menu/profile-menu.component';
+import { VehicleDetailsComponent } from './account/components/vehicle-details/vehicle-details.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
       {
         path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
           { path: '', component: ProfileMenuComponent },
-          { path: 'cars', component: MyCarsListComponent }
+          { path: 'cars', component: MyCarsListComponent },
+          { path: 'cars/:registration', component: VehicleDetailsComponent }
         ]
       },
       { path: "policy/privacy", component: PrivacyPolicyComponent }

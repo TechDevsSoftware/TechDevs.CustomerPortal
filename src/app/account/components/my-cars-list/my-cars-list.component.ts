@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProfile, UserVehicle } from '../../../core/models/auth.models';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
 import { VehicleService } from '../../../core/services/techdevs-vehicle.service';
+import { RouterNavService } from '../../../core/services/router-nav.service';
 
 @Component({
   selector: 'app-my-cars-list',
@@ -15,7 +16,8 @@ export class MyCarsListComponent implements OnInit {
 
   constructor(
     private authService: TechDevsAuthService,
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    private routerNav: RouterNavService
   ) { }
 
   async ngOnInit() {
@@ -34,5 +36,10 @@ export class MyCarsListComponent implements OnInit {
     await this.vehicleService.deleteVehicle(reg);
     await this.loadData();
   }
+
+  vehicleDetails(reg: string) {
+    this.routerNav.navigate(['profile', 'cars', reg]);
+  }
+
 
 }

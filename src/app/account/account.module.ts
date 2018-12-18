@@ -9,12 +9,15 @@ import { MyCarsListComponent } from './components/my-cars-list/my-cars-list.comp
 import { RouterModule } from '@angular/router';
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 import { VehicleLookupComponent } from './components/vehicle-lookup/vehicle-lookup.component';
+import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
+import { MomentModule } from "ngx-moment";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MomentModule
   ],
   declarations: [
     SigninComponent,
@@ -22,7 +25,8 @@ import { VehicleLookupComponent } from './components/vehicle-lookup/vehicle-look
     RegisterComponent,
     MyCarsListComponent,
     ProfileMenuComponent,
-    VehicleLookupComponent
+    VehicleLookupComponent,
+    VehicleDetailsComponent
   ],
   providers: [
     RouterNavService

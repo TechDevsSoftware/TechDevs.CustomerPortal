@@ -1,9 +1,13 @@
-<p>
-  vehicle-lookup works!
-</p>
 
-<input type="text" [(ngModel)]="reg" class="form-input">
-<button class="btn btn-primary" (click)="search()">Search</button>
+<div class="row">
+  <div>
+    <input type="text" [(ngModel)]="reg" class="reg-input" placeholder="ENTER REG">
+  </div>
+  <div class="col">
+    <button class="btn btn-success reg-search" (click)="search()"><i class="fa fa-search"></i></button>
+  </div>
+
+</div>
 
 <div *ngIf="result">
   <h5>{{result.make}} {{result.model}}</h5>

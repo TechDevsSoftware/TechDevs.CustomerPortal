@@ -34,6 +34,12 @@ export class MOTResult {
   odometerUnit: string;
   odometerResultType: string;
   motTestNumber: string;
+  comments: MOTComment[];
+}
+
+export class MOTComment {
+  text: string;
+  type: string;
 }
 
 export class UserRegistration {

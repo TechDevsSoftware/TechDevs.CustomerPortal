@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-sm">
+    <span class="page-title">Your Vehicle Details</span>
+  </div>
+  <div class="col-sm">
+    <div class="btn-group btn-group-sm float-right">
+        <button class="btn btn-success" (click)="refreshVehicleData()"> <i class="fa fa-refresh"></i> Refresh Vehicle Data</button>
+        <button class="btn btn-danger" (click)="deleteVehicle()"> <i class="fa fa-trash"></i> Delete Vehicle</button>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div *ngIf="vehicle">
+  <div class="row">
+    <div class="col">
+      <span> <strong>Make</strong></span>
+      <p>{{vehicle.make}}</p>
+    </div>
+    <div class="col">
+      <span> <strong>Model</strong></span>
+      <p>{{vehicle.model}}</p>
+    </div>
+    <div class="col">
+      <span> <strong>Registration</strong></span>
+      <p>{{vehicle.registration}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span> <strong>Fuel Type</strong></span>
+      <p>{{vehicle.fuelType}}</p>
+    </div>
+    <div class="col">
+      <span> <strong>Colour</strong></span>
+      <p>{{vehicle.colour}}</p>
+    </div>
+    <div class="col">
+      <span> <strong>Year</strong></span>
+      <p>{{vehicle.year}}</p>
+    </div>
+  </div>
+
+  <table class="table table-sm " *ngIf="vehicle.motResults && vehicle.motResults.length > 0">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="49">MOT History</th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th>MOT Date</th>
+        <th>Odometer</th>
+        <!-- <th>Result</th> -->
+      </tr>
+    </thead>
+    <tbody *ngFor="let mot of vehicle.motResults">
+      <tr class="row-mot" [ngClass]="{'table-success': mot.testResult == 'PASSED', 'table-danger': mot.testResult == 'FAILED'}">
+        <td>{{mot.completedDate | amDateFormat:'LL'}}</td>
+        <td>{{mot.odometerValue | number}} {{mot.odometerUnit}}</td>
+        <!-- <td><span>{{mot.testResult}}</span></td> -->
+      </tr>
+      <tr *ngFor="let comment of mot.comments" class="row-comment">
+        <td><i class="fa fa-comment-o"></i></td>
+        <td colspan="2"><span class="badge" [ngClass]="{'badge-danger': comment.type == 'FAIL', 'badge-warning': comment.type == 'ADVISORY', 'badge-primary': true}">{{comment.type}}</span>
+          <span class="comment-text"><em>&nbsp; &nbsp; &nbsp;{{comment.text}}</em></span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-info" role="alert" *ngIf="!vehicle.motResults || vehicle.motResults.length == 0">
+    <i class="fa fa-info-circle"></i>
+    This vehicle has no MOT history available
+  </div>
+
+</div>

@@ -28,6 +28,8 @@ export class VehicleLookupComponent implements OnInit {
   async addToMyCars() {
     await this.vehicleService.addVehicle(this.result);
     this.onCarAdded.emit();
+    this.result = null;
+    this.reg = null;
   }
 
 }
