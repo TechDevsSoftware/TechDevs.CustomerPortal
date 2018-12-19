@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap-grid.css";
+@import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 // @import "./assets/styles/bootstrap-dynamic.css";
 // @import "./assets/styles/mini.css";
@@ -36,7 +36,7 @@ app-root {
     --td-login-text: #999;
 
     // Buttons
-    --td-btn-background: blue;
+    --td-btn-background: var(--td-primary);
     --td-btn-text: #fff;
 
   }

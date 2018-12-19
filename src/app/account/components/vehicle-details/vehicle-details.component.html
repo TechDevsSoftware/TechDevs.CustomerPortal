@@ -3,11 +3,12 @@
     <span class="page-title">Your Vehicle Details</span>
   </div>
   <div class="col-sm">
-    <div class="btn-group btn-group-sm float-right">
-        <button class="btn btn-success" (click)="refreshVehicleData()"> <i class="fa fa-refresh"></i> Refresh Vehicle Data</button>
-        <button class="btn btn-danger" (click)="deleteVehicle()"> <i class="fa fa-trash"></i> Delete Vehicle</button>
-    </div>
   </div>
+</div>
+
+<div class="btn-group btn-group-sm">
+    <button class="btn btn-success" (click)="refreshVehicleData()"> <i class="fa fa-refresh"></i> Refresh Vehicle Data</button>
+    <button class="btn btn-danger" (click)="deleteVehicle()"> <i class="fa fa-trash"></i> Delete Vehicle</button>
 </div>
 
 <br>
@@ -62,8 +63,7 @@
         <!-- <td><span>{{mot.testResult}}</span></td> -->
       </tr>
       <tr *ngFor="let comment of mot.comments" class="row-comment">
-        <td><i class="fa fa-comment-o"></i></td>
-        <td colspan="2"><span class="badge" [ngClass]="{'badge-danger': comment.type == 'FAIL', 'badge-warning': comment.type == 'ADVISORY', 'badge-primary': true}">{{comment.type}}</span>
+        <td colspan="44"><span class="badge" [ngClass]="{'badge-danger': comment.type == 'FAIL', 'badge-warning': comment.type == 'ADVISORY', 'badge-primary': true}">{{comment.type}}</span>
           <span class="comment-text"><em>&nbsp; &nbsp; &nbsp;{{comment.text}}</em></span></td>
       </tr>
     </tbody>
