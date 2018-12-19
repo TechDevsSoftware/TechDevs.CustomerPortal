@@ -27,12 +27,7 @@ export class SigninComponent implements OnInit {
     private nav: RouterNavService,
     private clientService: ClientService,
     private router: Router,
-    private _elementRef: ElementRef,
-    private renderer: Renderer2
-  ) {
-    // this.renderer.setElementClass(document.body, 'modal-open', false);
-    // this.renderer.selectRootElement();
-  }
+  ) { }
 
 
   async ngOnInit() {
@@ -45,7 +40,7 @@ export class SigninComponent implements OnInit {
     }
     const html = document.getElementsByTagName('html');
     html[0].style.setProperty('--td-primary', this.client.clientTheme.primaryColour);
-    // html[0].style.setProperty('--primary', '#ff7800');
+    html[0].style.setProperty('--td-logo-background', this.client.clientTheme.primaryColour);
   }
 
   async loadClientData() {
