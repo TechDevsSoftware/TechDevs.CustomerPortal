@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ElementRef, Inject, Renderer2 } f
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
 import { RouterNavService } from '../../../core/services/router-nav.service';
 import { ClientService } from '../../../core/services/techdevs-client.service';
-import { TechDevsClient } from '../../../core/models/auth.models';
+import { Client } from '../../../core/models/auth.models';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { _document } from '@angular/platform-browser/src/browser';
@@ -20,7 +20,7 @@ export class SigninComponent implements OnInit {
   email: string;
   password: string;
   errMessage: string;
-  client: TechDevsClient;
+  client: Client;
 
   constructor(
     private authService: TechDevsAuthService,
@@ -38,9 +38,6 @@ export class SigninComponent implements OnInit {
     if (this.authService.isLoggedIn) {
       this.authService.redirectToProfile();
     }
-    const html = document.getElementsByTagName('html');
-    html[0].style.setProperty('--td-primary', this.client.clientTheme.primaryColour);
-    // html[0].style.setProperty('--td-logo-background', this.client.clientTheme.primaryColour);
   }
 
   async loadClientData() {

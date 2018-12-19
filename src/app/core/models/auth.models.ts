@@ -52,8 +52,7 @@ export class UserRegistration {
 }
 
 
-export class TechDevsClient {
-
+export class Client {
   id: string;
   name: string;
   siteUrl: string;
@@ -70,4 +69,10 @@ export class ClientTheme {
   dangerColour: string;
   logoPath: string;
   logoData: Blob;
+  parameters: CSSParameter[];
+}
+
+export class CSSParameter {
+  key: string;
+  value: string;
 }

@@ -20,9 +20,24 @@ app-root {
   }
 
 
+  .btn-client {
+    background-color: var(--td-btn-background);
+    color: var(--td-btn-text);
+  }
+
   :root {
     --td-primary: #fff;
+    
+    // Logo
     --td-logo-background: transparent;
+    
+    // Login Screen
     --td-login-background: #f5f5f5;
+    --td-login-text: #999;
+
+    // Buttons
+    --td-btn-background: blue;
+    --td-btn-text: #fff;
+
   }
   

@@ -2,22 +2,26 @@ import { Injectable } from '@angular/core';
 import {
     HttpEvent, HttpInterceptor, HttpHandler, HttpRequest
 } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Injectable()
 export class ClientKeyInterceptor implements HttpInterceptor {
-    
+
     constructor(
-        private route: ActivatedRoute
-    ){ }
+        private route: ActivatedRoute,
+        private router: Router
+    ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
-        const modified = req.clone({setHeaders: {'TechDevs-ClientKey': this.clientKey}});
+        const modified = req.clone({ setHeaders: { 'TechDevs-ClientKey': this.clientKey } });
         return next.handle(modified);
     }
 
-    private get clientKey () : string {
-        console.log("Intercepted and got this ClientId", this.route.snapshot.firstChild.params['clientKey']);
-        return this.route.snapshot.firstChild.params['clientKey'];
+    private get clientKey(): string {
+        const url = location.pathname;
+        const parts = url.split('/');
+        const dealershipIndex = parts.findIndex(p => p == "dealership");
+        const result = parts[dealershipIndex + 1];
+        return result;
     }
 }

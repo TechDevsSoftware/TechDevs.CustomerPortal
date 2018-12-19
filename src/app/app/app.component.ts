@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../core/services/techdevs-auth.service';
 import { Spinkit } from 'ng-http-loader';
-
-export class LoginStatus {
-  isLoggedIn: boolean;
-  sessionId: string;
-  origin: string;
-  displayName: string;
-}
+import { ClientService } from '../core/services/techdevs-client.service';
+import { Client } from '../core/models/auth.models';
 
 @Component({
   selector: 'app-root',
@@ -15,29 +10,29 @@ export class LoginStatus {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public spinkit = Spinkit;
-  title = 'app';
-  isLoggedIn = false;
 
-  email: string;
-  password: string;
+  public spinkit = Spinkit;
+
+  client: Client;
 
   constructor(
-    private authService: TechDevsAuthService
+    private clientService: ClientService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.loadClientData();
+    if (this.client) {
+      this.updateClientStyling();
+    }
   }
 
-  signinWithEmail() {
-    this.authService.loginWithEmail(this.email, this.password);
+  async loadClientData() {
+    this.client = await this.clientService.getClient();
   }
 
-  signinWithGoogle() {
-    this.authService.loginWithGoogle();
-  }
-
-  logout() {
-    this.authService.logout();
+  updateClientStyling() {
+    const html = document.getElementsByTagName('html');
+    const params = this.client.clientTheme.parameters;
+    params.forEach(param => html[0].style.setProperty(param.key, param.value));
   }
 }

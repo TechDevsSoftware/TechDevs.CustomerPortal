@@ -1,6 +1,6 @@
 <div class="page">
   <div class="login">
-    <img class="brand-image" [src]="client?.clientTheme?.logoPath" />
+    <img *ngIf="client?.clientTheme?.logoPath" class="brand-image" [src]="client?.clientTheme?.logoPath" />
 
     <span class="login-title"> <i class="fa fa-lock"></i> &nbsp; Sign in to {{client?.name}}</span>
     
@@ -10,7 +10,7 @@
       <input type="text" name="email" [(ngModel)]="email" placeholder="Email Address">
       <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
 
-      <button type="submit" class="login-btn">LOG IN</button>
+      <button type="submit" class="login-btn btn-client">LOG IN</button>
       
       <hr>
 
