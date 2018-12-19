@@ -2,9 +2,10 @@
   <div class="login">
     <img class="brand-image" [src]="client?.clientTheme?.logoPath" />
 
-    <span class="login-title">Sign In</span>
-
+    <span class="login-title"> <i class="fa fa-lock"></i> &nbsp; Sign in to {{client?.name}}</span>
+    
     <form (submit)="login()">
+
 
       <input type="text" name="email" [(ngModel)]="email" placeholder="Email Address">
       <input type="password" name="password" [(ngModel)]="password" placeholder="Password">

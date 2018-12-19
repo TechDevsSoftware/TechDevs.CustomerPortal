@@ -40,7 +40,7 @@ export class SigninComponent implements OnInit {
     }
     const html = document.getElementsByTagName('html');
     html[0].style.setProperty('--td-primary', this.client.clientTheme.primaryColour);
-    html[0].style.setProperty('--td-logo-background', this.client.clientTheme.primaryColour);
+    // html[0].style.setProperty('--td-logo-background', this.client.clientTheme.primaryColour);
   }
 
   async loadClientData() {
