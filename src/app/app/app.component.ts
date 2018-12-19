@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private clientService: ClientService
-  ) { }
+  ) { 
+  }
 
   async ngOnInit() {
     await this.loadClientData();
@@ -34,5 +35,15 @@ export class AppComponent implements OnInit {
     const html = document.getElementsByTagName('html');
     const params = this.client.clientTheme.parameters;
     params.forEach(param => html[0].style.setProperty(param.key, param.value));
+  }
+
+  get primaryColor(): string {
+    if(this.client && this.client.clientTheme && this.client.clientTheme.parameters) {
+      const result = this.client.clientTheme.parameters.filter(x => x.key == "--td-primary")[0];
+      if(result) {
+        return result.value;
+      }
+    }
+    return "#ff0000";
   }
 }
