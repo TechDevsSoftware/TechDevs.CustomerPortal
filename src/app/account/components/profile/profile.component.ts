@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
-import { UserProfile } from '../../../core/models/auth.models';
+import { UserProfile, Client } from '../../../core/models/auth.models';
 import { RouterNavService } from '../../../core/services/router-nav.service';
+import { ClientService } from '../../../core/services/techdevs-client.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,16 +11,19 @@ import { RouterNavService } from '../../../core/services/router-nav.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user: UserProfile;
+  profile: UserProfile;
+  client: Client;
 
   constructor(
     private authService: TechDevsAuthService,
-    private routerNav: RouterNavService
+    private routerNav: RouterNavService,
+    private clientService: ClientService
   ) { }
 
   async ngOnInit() {
-    this.user = await this.authService.getUserProfile();
-    console.log("User profile", this.user);
+    this.client = await this.clientService.getClient();
+    this.profile = await this.authService.getUserProfile();
+    console.log("User profile", this.profile);
   }
 
 

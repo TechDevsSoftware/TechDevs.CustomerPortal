@@ -9,6 +9,7 @@ import { MyCarsListComponent } from './account/components/my-cars-list/my-cars-l
 import { ProfileMenuComponent } from './account/components/profile-menu/profile-menu.component';
 import { VehicleDetailsComponent } from './account/components/vehicle-details/vehicle-details.component';
 import { InvalidClientComponent } from './account/components/invalid-client/invalid-client.component';
+import { VehicleLookupComponent } from './account/components/vehicle-lookup/vehicle-lookup.component';
 
 const routes: Routes = [
   {path: 'invalid-client', component: InvalidClientComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
         path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], children: [
           { path: '', component: ProfileMenuComponent },
           { path: 'cars', component: MyCarsListComponent },
+          { path: 'cars/add', component: VehicleLookupComponent },
           { path: 'cars/:registration', component: VehicleDetailsComponent }
         ]
       },

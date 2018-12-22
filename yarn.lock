@@ -4038,6 +4038,13 @@ ng-http-loader@^3.0.0:
   dependencies:
     tslib "^1.9.0"
 
+ngx-modialog@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-modialog/-/ngx-modialog-5.0.1.tgz#0b2bd9cdb2495019f88af9aa5856a848f2fafb56"
+  integrity sha512-m6o7V01j97C/6GGQjNfxF96k6713G11Fs/S6RF7NbxRV3EUZsG0MqkDn2Q1fR0UEoaNqyKMDVDTya7N3hAnfPA==
+  dependencies:
+    tslib "^1.9.0"
+
 ngx-moment@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/ngx-moment/-/ngx-moment-3.3.0.tgz#54176d8d24cf0f0d90fbbb8a6e6185cbd0d55324"

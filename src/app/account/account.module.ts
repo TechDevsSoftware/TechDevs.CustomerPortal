@@ -12,13 +12,16 @@ import { VehicleLookupComponent } from './components/vehicle-lookup/vehicle-look
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 import { MomentModule } from "ngx-moment";
 import { InvalidClientComponent } from './components/invalid-client/invalid-client.component';
-
+import { ModalModule } from 'ngx-modialog';
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    MomentModule
+    MomentModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule
   ],
   declarations: [
     SigninComponent,

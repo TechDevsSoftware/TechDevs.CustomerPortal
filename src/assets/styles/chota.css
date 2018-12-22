@@ -664,7 +664,7 @@
       text-transform: lowercase;
   }
   .is-text-capitalize {
-      text-transform: capitalize;
+      text-transform: uppercase;
   }
   .is-full-screen {
       width: 100%;

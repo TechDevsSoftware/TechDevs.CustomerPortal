@@ -1,11 +1,36 @@
-<h2>My Cars</h2>
+<div class="car-card" *ngFor="let car of cars">
 
-<ul>
-  <li *ngFor="let car of cars">
-    <!-- <button class="btn btn-sm btn-danger" type="button" (click)="deleteVehicle(car.registration)"><i class="fa fa-trash"></i></button>   -->
-    <button class="btn btn-sm btn-warning" (click)="vehicleDetails(car.registration)">{{car.registration}}</button>
-    {{car.make}} {{car.model}}
-  </li>
-</ul>
+  <div class="title">
+    <span class="reg">{{car.registration}}</span>
+    <span class="flex-grow">{{car.make}} {{car.model}}</span>
+    <span class="fa fa-trash fa-2x delete-button" (click)="deleteVehicle(car.registration)"></span>
+  </div>
 
-<app-vehicle-lookup (onCarAdded)="loadData()"></app-vehicle-lookup>
+  <div class="labels">
+
+    <div class="label">
+      <i class="label-icon label-icon-green">
+        <img src="assets/images/MOT.png">
+      </i>
+      <span class="label-text label-text-green">MOT due <strong>{{car?.motResults[0]?.expiryDate | amDateFormat:'LL'}}</strong>
+      </span>
+    </div>
+
+    <div class="label">
+      <i class="label-icon fa fa-wrench label-icon-red"></i>
+      <span class="label-text label-text-red">Service due 1st January 2019</span>
+    </div>
+
+  </div>
+
+  <div class="buttons">
+    <a (click)="bookMOT()">Book MOT</a>
+    <span>|</span>
+    <a (click)="bookService()">Book Service</a>
+  </div>
+
+</div>
+
+<span class="add-vehicle" (click)="addVehicle()"> <i class="fa fa-plus"></i> Add Vehicle</span>
+
+<!-- <app-vehicle-lookup (onCarAdded)="loadData()"></app-vehicle-lookup> -->

@@ -13,6 +13,7 @@ app-root {
   body {
     height: 100%;
     margin: 0 !important;
+    background-color: var(--td-page-background);
   }
   html {
     height: 100%;
@@ -38,6 +39,10 @@ app-root {
     // Buttons
     --td-btn-background: var(--td-primary);
     --td-btn-text: #fff;
+
+    // Text
+    --td-default-font-color: var(#000);
+    --td-contrast-font-color: var(--td-primary);
 
   }
   
