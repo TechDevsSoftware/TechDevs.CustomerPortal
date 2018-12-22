@@ -29,10 +29,12 @@ export class VehicleLookupComponent implements OnInit {
   }
 
   async search() {
-    try {
-      this.result = await this.vehicleService.searchByReg(this.reg);
-    } catch (error) {
-      this.error = true;; 
+    if(this.canAdd) {
+      try {
+        this.result = await this.vehicleService.searchByReg(this.reg);
+      } catch (error) {
+        this.error = true;; 
+      }
     }
   }
 
