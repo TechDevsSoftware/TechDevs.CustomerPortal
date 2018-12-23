@@ -20,6 +20,7 @@ export class UserVehicle {
   fuelType: string;
   colour: string;
   motResults: MOTResult[];
+  motExpiryDate: Date;
 
   constructor() {
     this.motResults = [];
