@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserProfile } from '../models/auth.models';
-import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { RouterNavService } from './router-nav.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { ClientService } from './techdevs-client.service';
 
 export class LoginRequest {
   provider?: string;
@@ -19,7 +20,8 @@ export class TechDevsAuthService {
   constructor(
     private httpClient: HttpClient,
     private socialAuth: AuthService,
-    private routerNav: RouterNavService
+    private routerNav: RouterNavService,
+    private clientService: ClientService
   ) { }
 
   async loginWithEmail(email: string, password: string): Promise<string> {
@@ -79,11 +81,17 @@ export class TechDevsAuthService {
   }
 
   get isLoggedIn(): boolean {
-    return (this.token !== null);
+    const jwt = new JwtHelperService;
+    if (!this.token) return false; 
+    const expired = jwt.isTokenExpired(this.token);
+    if(expired) {
+      this.clearLocalToken();
+    }
+    return !expired;
   }
 
   get token(): string {
-    return window.localStorage.getItem('techdevs-auth-token');
+    return window.localStorage.getItem(this.getTokenKey());
   }
 
   private async onSuccessfulLogin(token: string) {
@@ -92,15 +100,20 @@ export class TechDevsAuthService {
   }
 
   private setLocalToken(token: string) {
-    window.localStorage.setItem('techdevs-auth-token', token);
+    window.localStorage.setItem(this.getTokenKey(), token);
   }
 
   private clearLocalToken() {
-    window.localStorage.removeItem('techdevs-auth-token');
+    window.localStorage.removeItem(this.getTokenKey());
   }
   async getUserProfile(): Promise<UserProfile> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     return this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/customer/account`, { headers: headers }).toPromise();
+  }
+
+  private getTokenKey(): string {
+    const clientKey: string = this.clientService.clientKey;
+    return `techdevs-auth-token:${clientKey}`;
   }
 
 }
