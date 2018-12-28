@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const token = this.authService.token;
-        console.log("Intercepting with token", token);
+        // console.log("Intercepting with token", token);
         if(!token) {
             return next.handle(req);
         }

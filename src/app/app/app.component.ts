@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private clientService: ClientService
-  ) { 
+  ) {
   }
 
   async ngOnInit() {
@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
   }
 
   get primaryColor(): string {
-    if(this.client && this.client.clientTheme && this.client.clientTheme.parameters) {
+    if (this.client && this.client.clientTheme && this.client.clientTheme.parameters) {
       const result = this.client.clientTheme.parameters.filter(x => x.key == "--td-primary")[0];
-      if(result) {
+      if (result) {
         return result.value;
       }
     }

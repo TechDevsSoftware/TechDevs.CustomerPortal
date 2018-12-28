@@ -76,8 +76,8 @@ export class TechDevsAuthService {
     this.routerNav.navigate(['login']);
   }
 
-  redirectToProfile() {
-    this.routerNav.navigate(['profile']);
+  redirectToAccount() {
+    this.routerNav.navigate(['account']);
   }
 
   get isLoggedIn(): boolean {
@@ -96,7 +96,7 @@ export class TechDevsAuthService {
 
   private async onSuccessfulLogin(token: string) {
     this.setLocalToken(token);
-    this.redirectToProfile();
+    this.redirectToAccount();
   }
 
   private setLocalToken(token: string) {
@@ -105,10 +105,6 @@ export class TechDevsAuthService {
 
   private clearLocalToken() {
     window.localStorage.removeItem(this.getTokenKey());
-  }
-  async getUserProfile(): Promise<UserProfile> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/customer/account`, { headers: headers }).toPromise();
   }
 
   private getTokenKey(): string {

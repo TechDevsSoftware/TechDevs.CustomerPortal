@@ -1,0 +1,41 @@
+
+<page-header title="Edit My Profile"></page-header>
+<div class="page-body" *ngIf="profile">
+  <form>
+    <div class="form-group">
+      <label for="lastName">Email</label>
+      <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="profile.emailAddress" [readOnly]="profile.providerName != 'TechDevs'">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Loged in via</label>
+      <input type="email" readonly class="form-control" name="providerName" placeholder="Provider Name" [(ngModel)]="profile.providerName">
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="profile.firstName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="profile.lastName">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Contact Number</label>
+      <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number" [(ngModel)]="profile.contactNumber">
+    </div>
+    
+    <p>
+      <small>
+        We always treat your data with respect, to learn more please read our <span class="privacy-link" (click)="privacy()">privacy notice</span>.
+      </small>
+    </p>
+
+    <div class="button-container">
+      <span class="button button-primary" (click)="save()">Save Changes</span>
+      <span class="button button-danger" (click)="deleteProfile()">Delete Account</span>
+    </div>
+
+  </form>
+
+</div>

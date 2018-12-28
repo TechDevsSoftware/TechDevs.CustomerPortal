@@ -14,6 +14,11 @@ import { AccountModule } from './account/account.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ClientKeyInterceptor } from './core/interceptors/clientkey.interceptor';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { MyVehiclesModule } from './my-vehicles/my-vehicles.module';
+import { SigninComponent } from './app/components/signin/signin.component';
+import { RegisterComponent } from './app/components/register/register.component';
+import { InvalidClientComponent } from './app/components/invalid-client/invalid-client.component';
+import { MyProfileModule } from './my-profile/my-profile.module';
 
 let config = new AuthServiceConfig([
   {
@@ -28,18 +33,23 @@ export function provideConfig() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SigninComponent,
+    RegisterComponent,
+    InvalidClientComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PolicyModule,
+    MyVehiclesModule,
     RouterModule.forRoot([]),
     CoreModule,
     SocialLoginModule,
     FormsModule,
     AccountModule,
-    NgHttpLoaderModule
+    NgHttpLoaderModule,
+    MyProfileModule
   ],
   providers: [
     {

@@ -1,0 +1,38 @@
+<div class="page-body">
+
+  <div class="car-card" *ngFor="let car of cars">
+    
+    <div class="title">
+      <span class="reg">{{car.registration}}</span>
+      <span class="flex-grow">{{car.make}} {{car.model}}</span>
+      <span class="fa fa-trash fa-2x delete-button" (click)="deleteVehicle(car.registration)"></span>
+    </div>
+    
+    <div class="labels">
+      
+      <div class="label">
+        <i class="label-icon label-icon-green">
+          <img src="assets/images/MOT.png">
+        </i>
+        <span class="label-text label-text-green">MOT due <strong>{{car?.motExpiryDate| amDateFormat:'LL'}}</strong>
+        </span>
+      </div>
+      
+      <div class="label">
+        <i class="label-icon fa fa-wrench label-icon-red"></i>
+        <span class="label-text label-text-red">Service due 1st January 2019</span>
+      </div>
+      
+    </div>
+    
+    <div class="buttons">
+      <a (click)="bookMOT()">Book MOT</a>
+      <span>|</span>
+      <a (click)="bookService()">Book Service</a>
+    </div>
+    
+  </div>
+  
+  <span class="add-vehicle" (click)="addVehicle()"> <i class="fa fa-plus"></i> Add Vehicle</span>
+  
+</div>  

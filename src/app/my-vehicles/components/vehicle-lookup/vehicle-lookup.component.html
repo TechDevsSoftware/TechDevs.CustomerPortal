@@ -1,0 +1,57 @@
+<div class="page-body">
+
+  
+  <div *ngIf="!result">
+    
+    <p class="title">Please enter the registration number for your vehicle</p>
+    <p class="title-sub"> Your number plate, for example LP51ZFG</p>
+    
+    <div class="search-container">
+      <input type="text" [(ngModel)]="reg" class="reg-input" placeholder="ENTER REG" (keydown.enter)="search()">
+      <button [disabled]="!canAdd" class="btn btn-success reg-search" (click)="search()"><i class="fa fa-search"></i></button>
+    </div>
+    
+    <div class="td-alert td-alert-danger" *ngIf="alreadyAdded">
+      This vehicle is already in your list!
+    </div>
+    
+    <div class="td-alert td-alert-danger" *ngIf="error">
+      Vehicle could not be found!
+    </div>
+    
+  </div>
+  
+  <div *ngIf="result">
+    <p class="title">Is this your car?</p>
+    <p class="title-sub">Please confirm the details below are correct.</p>
+    
+    <div class="vehicle-form">
+      <span class="label">Registration Number</span>
+      <span class="value">{{result?.registration}}</span>
+      
+      <span class="label">Make</span>
+      <span class="value">{{result?.make}}</span>
+      
+      <span class="label">Model</span>
+      <span class="value">{{result?.model}}</span>
+      
+      <span class="label">Colour</span>
+      <span class="value">{{result?.colour}}</span>
+      
+      <span class="label">Fuel Type</span>
+      <span class="value">{{result?.fuelType}}</span>
+      
+    </div>
+    
+    <p class="title-sub">
+      If these details are correct please confirm details to add your car. If not go back to re-enter your registration
+      number.
+    </p>
+    
+    <div class="buttons">
+      <span class="button-left" (click)="back()">BACK</span>
+      <span class="button-right" (click)="addToMyCars()">CONFIRM</span>
+    </div>
+  </div>
+
+</div>

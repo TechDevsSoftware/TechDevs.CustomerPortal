@@ -1,0 +1,42 @@
+<div class="profile-page">
+
+  <div class="profile-banner">
+    <div class="img-container">
+      <img [src]="client?.clientTheme?.logoPath" class="profile-image">
+    </div>
+  </div>
+
+  <div class="profile-nav-menu">
+
+    <div class="menu-item" [routerLink]="['home']" routerLinkActive="active">
+      <i class="fa fa-home"></i>
+      <span class="menu-item-label">Home</span>
+    </div>
+    
+    <div class="menu-item" [routerLink]="['cars']" routerLinkActive="active">
+      <i class="fa fa-car"></i>
+      <span class="menu-item-label">My Cars</span>
+    </div>
+    
+    <div class="menu-item" [routerLink]="['offers']" routerLinkActive="active">
+      <i class="fa fa-tag"></i>
+      <span class="menu-item-label">My Offers</span>
+    </div>
+    
+    <div class="menu-item" [routerLink]="['saved-vehicles']" routerLinkActive="active">
+      <i class="fa fa-heart"></i>
+      <span class="menu-item-label">Saved Vehicles</span>
+    </div>
+    
+    <div class="menu-item" [routerLink]="['profile']" routerLinkActive="active">
+      <i class="fa fa-user"></i>
+      <span class="menu-item-label">My Account</span>
+    </div>
+
+  </div>
+
+  <div class="profile-body" [ngClass]="{'profile-body-with-header': showHeader}">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

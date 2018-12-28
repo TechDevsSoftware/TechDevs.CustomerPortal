@@ -1,0 +1,31 @@
+.page-header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: #fff;
+    border-bottom: 1px solid #999;
+    margin-top: 140px !important;
+
+    .page-header-back-button {
+        width: 50px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: var(--td-primary);
+
+        cursor: pointer;
+
+        i {
+            width: 100%;
+        }
+    }
+
+    .page-header-title {
+        display: flex;
+        align-items: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: var( --td-primary);
+    }
+}

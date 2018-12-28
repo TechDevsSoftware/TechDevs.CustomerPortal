@@ -1,0 +1,36 @@
+.privacy-link {
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+
+    .button {
+        padding: 10px 5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        min-width: 180px;
+
+        font-weight: 600;
+        font-size: 1.3em;
+        cursor: pointer;     
+        
+        &.button-danger {
+            color: var(--td-danger);
+        }
+        &.button-primary {
+            color: var(--td-primary);
+        }
+    }
+}
+
+label {
+    color: var(--td-primary);
+}
+
+.form-control {
+    font-size: 1.2em !important;
+}

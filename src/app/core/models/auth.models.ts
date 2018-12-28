@@ -3,9 +3,11 @@ export class UserProfile {
   firstName: string;
   lastName: string;
   emailAddress: string;
+  contactNumber: string;
   agreedToTerms: boolean;
   validatedEmail: boolean;
   customerData: UserData;
+  providerName: string;
 }
 
 export class UserData {

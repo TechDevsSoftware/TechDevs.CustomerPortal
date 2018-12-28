@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserProfile, UserRegistration } from '../models/auth.models';
-import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
 export class LoginRequest {
@@ -29,7 +27,25 @@ export class TechDevsAccountsService {
       console.log("Registration errors", error.error);
       return "Failed to register new user";
     }
+  }
 
+  async getUserProfile(): Promise<UserProfile> {
+    return this.httpClient.get<UserProfile>(`${environment.accountServer}/api/v1/customer/account`, {}).toPromise();
+  }
+
+  async setName(firstName: string, lastName: string): Promise<UserProfile> {
+    const params = new HttpParams().set('firstName', firstName).set('lastName', lastName);
+    console.log(params);
+    return this.httpClient.post<UserProfile>(`${environment.accountServer}/api/v1/customer/account/setname`, {}, { params: params }).toPromise();
+  }
+
+  async setContactDetails(contactNumber: string): Promise<UserProfile> {
+    const params = new HttpParams().set('contactNumber', contactNumber);
+    return this.httpClient.post<UserProfile>(`${environment.accountServer}/api/v1/customer/account/setcontactdetails`, {}, { params: params }).toPromise();
+  }
+
+  async deleteUserProfile(): Promise<any> {
+    return this.httpClient.delete(`${environment.accountServer}/api/v1/customer/account`, {}).toPromise();
   }
 
 }
