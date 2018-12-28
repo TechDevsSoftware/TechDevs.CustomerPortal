@@ -31,4 +31,8 @@ export class DeleteProfileComponent implements OnInit {
   backToProfile() {
     this.routerNav.navigate(['account', 'profile']);
   }
+
+  privacy() {
+    this.routerNav.navigate(['policy', 'privacy']);
+  }
 }
