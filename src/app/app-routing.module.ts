@@ -14,6 +14,7 @@ import { DeleteProfileComponent } from './my-profile/components/delete-profile/d
 import { AccountHomeComponent } from './account/components/account-home/account-home.component';
 import { ProfileMenuComponent } from './my-profile/components/profile-menu/profile-menu.component';
 import { WipModuleComponent } from './account/components/wip-module/wip-module.component';
+import { NotificationsComponent } from './my-profile/components/notifications/notifications.component';
 
 const routes: Routes = [
   { path: 'invalid-client', component: InvalidClientComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
           { path: 'saved-vehicles', component: WipModuleComponent },
           { path: 'profile', component: ProfileMenuComponent },
           { path: 'profile/edit', component: EditProfileComponent },
-          { path: 'profile/delete', component: DeleteProfileComponent } 
+          { path: 'profile/delete', component: DeleteProfileComponent },
+          { path: 'profile/notifications', component: NotificationsComponent }
         ]
       },
       { path: "policy/privacy", component: PrivacyPolicyComponent }

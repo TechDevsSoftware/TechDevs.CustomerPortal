@@ -1,0 +1,54 @@
+<page-header title="Notification Preferences"></page-header>
+<div class="page-body">
+
+  <form *ngIf="profile?.customerData?.notificationPreferences">
+
+    <h5 class="example-h2">MOT Reminders</h5>
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle class="example-margin" name="motPush" [(ngModel)]="profile?.customerData?.notificationPreferences.motPush"></mat-slide-toggle>
+        <span>Push Notifications</span>
+      </div>
+      <div class="toggle">
+        <mat-slide-toggle class="example-margin" name="motEmail" [(ngModel)]="profile?.customerData?.notificationPreferences.motEmail"></mat-slide-toggle>
+        <span>Email</span>
+      </div>
+    </div>
+
+    <br>
+
+    <h5 class="example-h2">Service Reminders</h5>
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle class="example-margin" name="servicePush" [(ngModel)]="profile?.customerData?.notificationPreferences.servicePush"></mat-slide-toggle>
+        <span>Push Notifications</span>
+      </div>
+      <div class="toggle">
+        <mat-slide-toggle class="example-margin" name="serviceEmail" [(ngModel)]="profile?.customerData?.notificationPreferences.serviceEmail"></mat-slide-toggle>
+        <span>Email</span>
+      </div>
+    </div>
+
+    <br>
+
+    <h5 class="example-h2">Offers</h5>
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle class="example-margin" name="offersPush" [(ngModel)]="profile?.customerData?.notificationPreferences.offersPush"></mat-slide-toggle>
+        <span>Push Notifications</span>
+      </div>
+      <div class="toggle">
+        <mat-slide-toggle class="example-margin" name="offersEmail" [(ngModel)]="profile?.customerData?.notificationPreferences.offersEmail"></mat-slide-toggle>
+        <span>Email</span>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="button-container">
+      <div class="button button-primary" (click)="save()">Save Changes</div>
+    </div>
+
+  </form>
+
+</div>

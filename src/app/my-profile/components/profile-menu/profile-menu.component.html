@@ -1,12 +1,9 @@
 <div class="profile-menu">
-    <div class="profile-menu-item" [routerLink]="['edit']" routerLinkActive="active">
+    <div class="profile-menu-item" [routerLink]="['edit']">
       <span>My Profile</span>
     </div>
-    <div class="profile-menu-item">
+    <div class="profile-menu-item" [routerLink]="['notifications']">
       <span>Notifictions</span>
-    </div>
-    <div class="profile-menu-item">
-      <span>Service History</span>
     </div>
     <div class="profile-menu-item" (click)="logout()">
       <span> <i class="fa fa-sign-out"></i> Logout</span>

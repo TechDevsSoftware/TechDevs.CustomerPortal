@@ -1,0 +1,17 @@
+.toggle-group {
+    display: flex;
+    flex-direction: column;
+
+    .toggle {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        padding: 5px;
+
+        span {
+            width: 100%;
+            text-align: right;
+            font-size: 1.2em;
+        }
+    }
+}

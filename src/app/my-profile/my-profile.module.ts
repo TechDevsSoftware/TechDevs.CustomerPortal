@@ -6,14 +6,17 @@ import { DeleteProfileComponent } from './components/delete-profile/delete-profi
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { MatSlideToggleModule } from "@angular/material";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    MatSlideToggleModule
   ],
-  declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent]
+  declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent, NotificationsComponent]
 })
 export class MyProfileModule { }

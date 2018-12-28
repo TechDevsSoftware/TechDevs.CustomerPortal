@@ -19,6 +19,7 @@ import { SigninComponent } from './app/components/signin/signin.component';
 import { RegisterComponent } from './app/components/register/register.component';
 import { InvalidClientComponent } from './app/components/invalid-client/invalid-client.component';
 import { MyProfileModule } from './my-profile/my-profile.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 let config = new AuthServiceConfig([
   {
@@ -49,7 +50,8 @@ export function provideConfig() {
     FormsModule,
     AccountModule,
     NgHttpLoaderModule,
-    MyProfileModule
+    MyProfileModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

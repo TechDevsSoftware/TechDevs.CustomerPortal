@@ -12,6 +12,16 @@ export class UserProfile {
 
 export class UserData {
   myVehicles: UserVehicle[];
+  notificationPreferences: NotificationPreferences;
+}
+
+export class NotificationPreferences {
+  motEmail: boolean;
+  motPush: boolean;
+  serviceEmail: boolean;
+  servicePush: boolean;
+  offersEmail: boolean;
+  offersPush: boolean;
 }
 
 export class UserVehicle {

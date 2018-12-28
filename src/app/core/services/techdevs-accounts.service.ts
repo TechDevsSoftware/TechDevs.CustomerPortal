@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { UserProfile, UserRegistration } from '../models/auth.models';
+import { UserProfile, UserRegistration, NotificationPreferences } from '../models/auth.models';
 import { environment } from '../../../environments/environment';
 
 export class LoginRequest {
@@ -46,6 +46,10 @@ export class TechDevsAccountsService {
 
   async deleteUserProfile(): Promise<any> {
     return this.httpClient.delete(`${environment.accountServer}/api/v1/customer/account`, {}).toPromise();
+  }
+
+  async updateNotificationPreferences(notificationPreferences: NotificationPreferences): Promise<UserProfile> {
+    return this.httpClient.post<UserProfile>(`${environment.accountServer}/api/v1/customer/account/notificationpreferences`, notificationPreferences, {}).toPromise();
   }
 
 }

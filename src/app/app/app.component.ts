@@ -34,8 +34,14 @@ export class AppComponent implements OnInit {
   updateClientStyling() {
     const html = document.getElementsByTagName('html');
     const params = this.client.clientTheme.parameters;
-    params.forEach(param => html[0].style.setProperty(param.key, param.value));
-  }
+    params.forEach(param => {
+      console.log(param.key);
+      html[0].style.setProperty(param.key, param.value);
+      // html[0].style.setProperty(`${param.key}-rgb`, `255, 255, 255`);
+      html[0].style.setProperty(`${param.key}-rgb`, this.hexToRgb(param.value));
+    });
+  };
+
 
   get primaryColor(): string {
     if (this.client && this.client.clientTheme && this.client.clientTheme.parameters) {
@@ -45,5 +51,16 @@ export class AppComponent implements OnInit {
       }
     }
     return "#ff0000";
+  }
+
+  hexToRgb(hex: string): string {
+    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `${parseInt(result[1], 16)},${parseInt(result[2], 16)},${parseInt(result[3], 16)}`: '';
   }
 }
