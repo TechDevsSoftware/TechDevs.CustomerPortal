@@ -64,14 +64,16 @@
 
     .label {
         padding: 5px;
-        color: var(--td-default-font-color);
-        filter: brightness(80%);
+        color: var(--td-primary);
+        font-weight: bold;
+        
     }
     
     .value {
         padding: 5px;
-        color: var(--td-default-font-color);
-        font-size: 1.1em;
+        color: var(--td-secondary);
+        font-size: 1.2em;
+        font-weight: bold;
     }
 }
 
@@ -82,4 +84,19 @@
     border-radius: 5px;
     padding: 15px;
     margin-top: 20px;
+}
+
+.reg {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 15px;
+    color: #000;
+    text-align: center;
+    max-width: 100px;
+    background-color: #f2cf53;
+    border: 1px solid #a9a9a9;
+    border-radius: 5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    max-height: 34px;
 }
