@@ -3,7 +3,7 @@
 
   <form *ngIf="profile?.customerData?.notificationPreferences">
 
-    <h5 class="example-h2">MOT Reminders</h5>
+    <h5>MOT Reminders</h5>
     <div class="toggle-group">
       <div class="toggle">
         <mat-slide-toggle class="example-margin" name="motPush" [(ngModel)]="profile?.customerData?.notificationPreferences.motPush"></mat-slide-toggle>
@@ -17,7 +17,7 @@
 
     <br>
 
-    <h5 class="example-h2">Service Reminders</h5>
+    <h5>Service Reminders</h5>
     <div class="toggle-group">
       <div class="toggle">
         <mat-slide-toggle class="example-margin" name="servicePush" [(ngModel)]="profile?.customerData?.notificationPreferences.servicePush"></mat-slide-toggle>
@@ -31,7 +31,7 @@
 
     <br>
 
-    <h5 class="example-h2">Offers</h5>
+    <h5>Offers</h5>
     <div class="toggle-group">
       <div class="toggle">
         <mat-slide-toggle class="example-margin" name="offersPush" [(ngModel)]="profile?.customerData?.notificationPreferences.offersPush"></mat-slide-toggle>
@@ -45,9 +45,7 @@
 
     <br>
 
-    <div class="button-container">
-      <div class="button button-primary" (click)="save()">Save Changes</div>
-    </div>
+    <button mat-stroked-button color="primary" class="button button-primary" (click)="save()">Save Changes</button>
 
   </form>
 

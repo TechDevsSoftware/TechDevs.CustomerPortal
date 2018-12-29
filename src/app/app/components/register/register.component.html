@@ -1,53 +1,47 @@
-<div class="login-container">
+<div class="page">
+  <div class="login">
+
+    <span class="login-title"> <i class="fa fa-lock"></i> &nbsp; Please enter your details to create an account</span>
+
+    <form (submit)="register()">
+
+      <mat-form-field class="full-width">
+        <input type="text" matInput placeholder="First Name" name="firstName" [(ngModel)]="reg.firstName" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input type="text" matInput placeholder="Last Name" name="lastName" [(ngModel)]="reg.lastName" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input type="email" matInput placeholder="Email" name="emailAddress" [(ngModel)]="reg.emailAddress" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input type="password" matInput placeholder="Password" name="password" [(ngModel)]="reg.password" required>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input type="password" matInput placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+      </mat-form-field>
 
 
-  <form class="form-signin" (ngSubmit)="register()" *ngIf="reg">
-    <img class="mb-4 center" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-    <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> -->
+      <mat-checkbox [(ngModel)]="reg.aggreedToTerms" name="agreedToTerms">I Agree to the Terms & Conditions</mat-checkbox>
 
-    <div class="td-alert td-alert-danger" role="alert" *ngIf="errMessage">
-      {{errMessage}}
-    </div>
-    <div class="forn-group row">
-      <label for="firstName" class="sr-only">First Name</label>
-      <input type="text" id="firstName" class="form-control" placeholder="First Name" required autofocus autocomplete="new-password"
-        [(ngModel)]="reg.firstName" name="firstName">
-    </div>
 
-    <div class="forn-group row">
-      <label for="lastName" class="sr-only">Last Name</label>
-      <input type="text" id="lastName" class="form-control" placeholder="Last Name" required autofocus autocomplete="new-password"
-        [(ngModel)]="reg.lastName" name="lastName">
-    </div>
+      <br>
+      <br>
 
-    <div class="forn-group row">
-      <label for="email" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus autocomplete="new-password"
-        [(ngModel)]="reg.emailAddress" name="email">
-    </div>
+      <button type="submit" class="login-btn btn-client">Register</button>
 
-    <div class="forn-group row">
-      <label for="password" class="sr-only">Password</label>
-      <input type="password" id="password" class="form-control" placeholder="Password" required autofocus autocomplete="new-password"
-        [(ngModel)]="reg.password" name="password">
-    </div>
 
-    <div class="forn-group row">
-      <label for="confirmPassword" class="sr-only">Confirm Password</label>
-      <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required autofocus autocomplete="new-password"
-        [(ngModel)]="confirmPassword" name="confirmPassword">
-    </div>
+      <p>
+        <small>
+          We always treat your data with respect, to learn more please read our <span class="privacy-link" (click)="privacy()">privacy
+            notice</span>.
+        </small>
+      </p>
 
-    <div class="forn-group row">
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" [(ngModel)]="reg.aggreedToTerms" name="agrreedToTerms"> Agree to Terms & Conditions
-        </label>
-      </div>
-    </div>
+    </form>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    <p class="mt-5 mb-3 text-muted">&copy; TechDevs 2018</p>
-  </form>
-
-</div>
+  </div>

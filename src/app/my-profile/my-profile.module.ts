@@ -7,7 +7,7 @@ import { ProfileMenuComponent } from './components/profile-menu/profile-menu.com
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { MatSlideToggleModule } from "@angular/material";
+import { MatSlideToggleModule, MatInputModule, MatButtonModule } from "@angular/material";
 
 @NgModule({
   imports: [
@@ -15,7 +15,9 @@ import { MatSlideToggleModule } from "@angular/material";
     FormsModule,
     RouterModule,
     SharedModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatInputModule,
+    MatButtonModule
   ],
   declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent, NotificationsComponent]
 })

@@ -1,40 +1,44 @@
-
 <page-header title="Edit My Profile"></page-header>
 <div class="page-body" *ngIf="profile">
   <form>
-    <div class="form-group">
-      <label for="lastName">Email</label>
-      <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="profile.emailAddress" [readOnly]="profile.providerName != 'TechDevs'">
-    </div>
 
-    <div class="form-group">
-      <label for="lastName">Loged in via</label>
-      <input type="email" readonly class="form-control" name="providerName" placeholder="Provider Name" [(ngModel)]="profile.providerName">
-    </div>
+    <mat-form-field class="full-width">
+      <input type="email" matInput class="form-control" name="email" placeholder="Email" [(ngModel)]="profile.emailAddress"
+        [disabled]="profile.providerName != 'TechDevs'">
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="profile.firstName">
-    </div>
-    <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="profile.lastName">
-    </div>
-    <div class="form-group">
-      <label for="lastName">Contact Number</label>
-      <input type="tel" class="form-control" name="contactNumber" placeholder="Contact Number" [(ngModel)]="profile.contactNumber">
-    </div>
+    <mat-form-field class="full-width">
+      <input matInput type="email" disabled class="form-control" name="providerName" placeholder="Logged In With"
+        [(ngModel)]="profile.providerName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="profile.firstName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="profile.lastName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="tel" class="form-control" name="contactNumber" placeholder="Contact Number" [(ngModel)]="profile.contactNumber">
+    </mat-form-field>
+
+    <button mat-stroked-button color="primary" class="button button-primary" (click)="save()">Save Changes</button>
+    
     
     <p>
       <small>
-        We always treat your data with respect, to learn more please read our <span class="privacy-link" (click)="privacy()">privacy notice</span>.
-      </small>
-    </p>
-
-    <div class="button-container">
-      <span class="button button-primary" (click)="save()">Save Changes</span>
-      <span class="button button-danger" (click)="deleteProfile()">Delete Account</span>
-    </div>
+        We always treat your data with respect, to learn more please read our <span class="privacy-link" (click)="privacy()">privacy
+          notice</span>.
+        </small>
+      </p>
+      
+      <p>
+        <small>
+          If you wish to delete your account, <span class="privacy-link" (click)="deleteProfile()">click here</span>.
+          </small>
+      </p>
 
   </form>
 

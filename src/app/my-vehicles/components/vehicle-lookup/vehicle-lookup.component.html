@@ -1,5 +1,6 @@
-<div class="page-body">
+<page-header title="Find My Vehicle"></page-header>
 
+<div class="page-body">
   
   <div *ngIf="!result">
     
@@ -8,7 +9,7 @@
     
     <div class="search-container">
       <input type="text" [(ngModel)]="reg" class="reg-input" placeholder="ENTER REG" (keydown.enter)="search()">
-      <button [disabled]="!canAdd" class="btn btn-success reg-search" (click)="search()"><i class="fa fa-search"></i></button>
+      <button mat-raised-button color="primary" [disabled]="!canAdd" (click)="search()"><i class="fa fa-search"></i></button>
     </div>
     
     <div class="td-alert td-alert-danger" *ngIf="alreadyAdded">
@@ -50,8 +51,8 @@
     </p>
     
     <div class="buttons">
-      <span class="button-left" (click)="back()">BACK</span>
-      <span class="button-right" (click)="addToMyCars()">CONFIRM</span>
+      <button mat-button class="button-left" (click)="back()">BACK</button>
+      <button mat-button color="primary" class="button-right" (click)="addToMyCars()">CONFIRM</button>
     </div>
   </div>
 

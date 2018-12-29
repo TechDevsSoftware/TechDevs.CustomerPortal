@@ -3,3 +3,11 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+        button {
+            margin-bottom: 15px;
+        }
+}

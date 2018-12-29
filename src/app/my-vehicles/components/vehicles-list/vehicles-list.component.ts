@@ -4,7 +4,7 @@ import { TechDevsAuthService } from '../../../core/services/techdevs-auth.servic
 import { VehicleService } from '../../../core/services/techdevs-vehicle.service';
 import { RouterNavService } from '../../../core/services/router-nav.service';
 import { Overlay } from 'ngx-modialog';
-import { Modal } from 'ngx-modialog/plugins/bootstrap';
+import { Modal } from 'ngx-modialog/plugins/js-native';
 import { MenuTitleService } from '../../../core/services/menu-title.service';
 import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
 
@@ -46,7 +46,6 @@ export class VehcilesListComponent implements OnInit {
     const dialogRef = this.modal
     .confirm()
     .message("Are you shure you want to remove this vehicle?")
-    .title("Remove Vehicle")
     .open();
 
     try {

@@ -1,26 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRegistration } from '../../../core/models/auth.models';
+import { UserRegistration, Client } from '../../../core/models/auth.models';
 import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
+import { ClientService } from '../../../core/services/techdevs-client.service';
+import { RouterNavService } from '../../../core/services/router-nav.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
 
   reg: UserRegistration;
   confirmPassword: string;
   errMessage: string;
+  client: Client;
 
   constructor(
     private accountsService: TechDevsAccountsService,
-    private authService: TechDevsAuthService
+    private authService: TechDevsAuthService,
+    private clientService: ClientService,
+    private routerNav: RouterNavService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.resetRegistration();
+    await this.loadData();
+  }
+
+  async loadData() {
+      this.client = await this.clientService.getClient();
   }
 
   resetRegistration() {
@@ -44,4 +54,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  privacy() {
+    this.routerNav.navigate(['policy', 'privacy']);
+  }
 }

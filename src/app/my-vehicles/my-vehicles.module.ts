@@ -6,13 +6,17 @@ import { VehicleLookupComponent } from './components/vehicle-lookup/vehicle-look
 import { FormsModule } from '@angular/forms';
 import { MomentModule } from 'ngx-moment';
 import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
+import { MatButtonModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     MomentModule,
-    CoreModule
+    CoreModule,
+    SharedModule,
+    MatButtonModule
   ],
   declarations: [
     VehicleDetailsComponent,

@@ -20,6 +20,7 @@ import { RegisterComponent } from './app/components/register/register.component'
 import { InvalidClientComponent } from './app/components/invalid-client/invalid-client.component';
 import { MyProfileModule } from './my-profile/my-profile.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatInputModule, MatCheckboxModule } from '@angular/material';
 
 let config = new AuthServiceConfig([
   {
@@ -51,7 +52,9 @@ export function provideConfig() {
     AccountModule,
     NgHttpLoaderModule,
     MyProfileModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [
     {

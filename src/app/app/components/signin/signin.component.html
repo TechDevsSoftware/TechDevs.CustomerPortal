@@ -6,15 +6,27 @@
     
     <form (submit)="login()">
 
+      <!-- <input type="text" name="email" [(ngModel)]="email" placeholder="Email Address">
+      <input type="password" name="password" [(ngModel)]="password" placeholder="Password"> -->
 
-      <input type="text" name="email" [(ngModel)]="email" placeholder="Email Address">
-      <input type="password" name="password" [(ngModel)]="password" placeholder="Password">
+      <mat-form-field class="full-width">
+        <input type="text" matInput placeholder="Email" name="email" [(ngModel)]="email">
+      </mat-form-field>
 
-      <button type="submit" class="login-btn btn-client">LOG IN</button>
+      <mat-form-field class="full-width">
+        <input type="password" matInput placeholder="Password" name="password" [(ngModel)]="password">
+      </mat-form-field>
+
+
+      <button type="submit" class="login-btn btn-client">Sign In</button>
       
       <hr>
-
+      
       <button type="button" class="login-btn login-btn-google" (click)="loginWithGoogle()"> <i class="fa fa-google btn-icon"></i> SIGN IN WITH GOOGLE</button>
+      
+      <br>
+
+      <p>Don't have an account? <a [routerLink]="['../', 'register']">Create one now</a></p>
 
     </form>
 

@@ -9,7 +9,10 @@
         notice</span>.
       </small>
     </p>
-    
-    <button class="btn btn-danger btn-block" (click)="delete()"> <i class="fa fa-trash"></i> Yes, delete my profile</button>
-    <button class="btn btn-default btn-block" (click)="backToProfile()"> <i class="fa fa-arrow-left"></i> No, take me back to my profile</button>
+
+    <div class="button-container">
+      <button mat-raised-button color="warn" (click)="delete()"> <i class="fa fa-trash"></i> Yes, delete my profile</button>
+      <button mat-raised-button (click)="backToProfile()"> <i class="fa fa-arrow-left"></i> No, take me back to my profile</button>
+    </div>    
+      
   </div>

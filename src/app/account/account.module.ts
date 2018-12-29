@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MomentModule } from "ngx-moment";
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
+import { JSNativeModalModule } from "ngx-modialog/plugins/js-native";
 import { AccountComponent } from './components/account/account.component';
 import { AccountHomeComponent } from './components/account-home/account-home.component';
 import { WipModuleComponent } from './components/wip-module/wip-module.component';
@@ -17,7 +18,7 @@ import { WipModuleComponent } from './components/wip-module/wip-module.component
     RouterModule,
     MomentModule,
     ModalModule.forRoot(),
-    BootstrapModalModule,
+    JSNativeModalModule,
   ],
   declarations: [
     AccountComponent,

@@ -59,7 +59,7 @@ export class UserRegistration {
   firstName: string;
   lastName: string;
   emailAddress: string;
-  aggreedToTerms: string;
+  aggreedToTerms: boolean;
   provider: string;
   password: string;
 }
