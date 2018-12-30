@@ -1,7 +1,8 @@
-$bannerHeight: 80px;
+$bannerHeight: 50px;
 
 .profile-page {
     width: 100%;
+    margin-top: 110px;
 
     .profile-banner {
         width: 100%;
@@ -23,7 +24,7 @@ $bannerHeight: 80px;
             align-items: center;
             width: 100%;
             img {
-                height: 60px;
+                height: 40px;
                 margin: 5px;
             }
         }
@@ -75,12 +76,5 @@ $bannerHeight: 80px;
                 padding: 5px 0px;;
             }
         }
-    }
-
-   
-
-    .profile-body {
-        margin-top: 140px !important;
-        // padding: 15px;
     }
 }
