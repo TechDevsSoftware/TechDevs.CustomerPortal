@@ -21,6 +21,7 @@ import { InvalidClientComponent } from './app/components/invalid-client/invalid-
 import { MyProfileModule } from './my-profile/my-profile.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatInputModule, MatCheckboxModule } from '@angular/material';
+import { OffersModule } from './offers/offers.module';
 
 let config = new AuthServiceConfig([
   {
@@ -54,7 +55,8 @@ export function provideConfig() {
     MyProfileModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    OffersModule
   ],
   providers: [
     {

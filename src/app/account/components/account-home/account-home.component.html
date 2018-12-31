@@ -9,6 +9,8 @@
         
         <app-mot-card *ngFor="let car of expiringMOTVehicles" [vehicle]="car">
         </app-mot-card>
+
+        <app-offer-list [usePadding]="false"></app-offer-list>
         
         <app-vehicle-card *ngFor="let car of profile?.customerData?.myVehicles" [vehicle]="car" [showButtons]="false" (onDeleted)="loadData()">
         </app-vehicle-card>

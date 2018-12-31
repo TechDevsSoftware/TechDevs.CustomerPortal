@@ -1,0 +1,39 @@
+.offer-card {
+    background: #fff;
+    border-radius: 2px;
+    margin-bottom: 10px; // min-width: 450px;
+    -webkit-box-shadow: 0 0 10px rgba(153, 153, 153, 0.65);
+    box-shadow: 0 0 10px rgba(153, 153, 153, 0.65);
+    display: flex;
+    flex-direction: column;
+    
+    .offer-image {
+        max-width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        max-height: 300px;
+    }
+    
+    .offer-body {
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+
+        .offer-title {
+            padding: 8px;
+        }
+
+        .offer-description {
+            padding: 8px;
+            font-size: 0.8em;
+            color: rgba(#000, 0.45);
+        }
+
+        .offer-code {
+            border: 2px dashed rgba(#000, 0.45);
+            text-transform: uppercase;
+            padding:10px;
+            margin: 8px;
+        }
+    }
+}

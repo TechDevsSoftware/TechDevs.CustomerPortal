@@ -16,6 +16,7 @@ import { ProfileMenuComponent } from './my-profile/components/profile-menu/profi
 import { WipModuleComponent } from './account/components/wip-module/wip-module.component';
 import { NotificationsComponent } from './my-profile/components/notifications/notifications.component';
 import { MarketingComponent } from './my-profile/components/marketing/marketing.component';
+import { OfferListComponent } from './offers/components/offer-list/offer-list.component';
 
 const routes: Routes = [
   { path: 'invalid-client', component: InvalidClientComponent },
@@ -31,7 +32,7 @@ const routes: Routes = [
           { path: 'cars', component: VehcilesListComponent },
           { path: 'cars/add', component: VehicleLookupComponent },
           { path: 'cars/:registration', component: VehicleDetailsComponent },
-          { path: 'offers', component: WipModuleComponent },
+          { path: 'offers', component: OfferListComponent },
           { path: 'saved-vehicles', component: WipModuleComponent },
           { path: 'profile', component: ProfileMenuComponent },
           { path: 'profile/edit', component: EditProfileComponent },

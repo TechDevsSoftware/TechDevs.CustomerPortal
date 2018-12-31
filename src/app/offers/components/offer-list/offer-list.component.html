@@ -1,0 +1,6 @@
+<div class="padding" *ngIf="usePadding">
+  <app-offer-card *ngFor="let offer of client?.clientData?.basicOffers" [offer]="offer"></app-offer-card>
+</div>
+<div *ngIf="!usePadding">
+  <app-offer-card *ngFor="let offer of client?.clientData?.basicOffers" [offer]="offer"></app-offer-card>
+</div>

@@ -1,0 +1,8 @@
+<div class="offer-card" *ngIf="offer">
+  <img [src]="offer.imageSrc" class="offer-image">
+    <div class="offer-body">
+      <span class="offer-title">{{offer?.title}}</span>
+      <span class="offer-description" *ngIf="offer?.description">{{offer?.description}}</span>
+      <button mat-button color="primary">GET OFFER</button>
+    </div>
+</div>

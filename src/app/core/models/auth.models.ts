@@ -80,6 +80,21 @@ export class Client {
   clientApiKey: string;
   shortKey: string;
   clientTheme: ClientTheme;
+  clientData: ClientData;
+}
+
+export class ClientData {
+  basicOffers: BasicOffer[];
+}
+
+export class BasicOffer {
+  id: string;
+  offerCode: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  badge: string;
+  enabled: boolean;
 }
 
 export class ClientTheme {

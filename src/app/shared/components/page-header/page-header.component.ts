@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PageHeaderComponent implements OnInit {
 
   @Input() title: string;
-
+  @Input() usePadding: boolean = true;
+  
   constructor() { }
 
   ngOnInit() {

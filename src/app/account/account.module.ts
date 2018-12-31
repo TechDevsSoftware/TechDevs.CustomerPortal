@@ -11,6 +11,7 @@ import { AccountComponent } from './components/account/account.component';
 import { AccountHomeComponent } from './components/account-home/account-home.component';
 import { WipModuleComponent } from './components/wip-module/wip-module.component';
 import { MyVehiclesModule } from '../my-vehicles/my-vehicles.module';
+import { OffersModule } from '../offers/offers.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { MyVehiclesModule } from '../my-vehicles/my-vehicles.module';
     MomentModule,
     ModalModule.forRoot(),
     JSNativeModalModule,
-    MyVehiclesModule
+    MyVehiclesModule,
+    OffersModule
   ],
   declarations: [
     AccountComponent,
