@@ -10,6 +10,7 @@ import { JSNativeModalModule } from "ngx-modialog/plugins/js-native";
 import { AccountComponent } from './components/account/account.component';
 import { AccountHomeComponent } from './components/account-home/account-home.component';
 import { WipModuleComponent } from './components/wip-module/wip-module.component';
+import { MyVehiclesModule } from '../my-vehicles/my-vehicles.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { WipModuleComponent } from './components/wip-module/wip-module.component
     MomentModule,
     ModalModule.forRoot(),
     JSNativeModalModule,
+    MyVehiclesModule
   ],
   declarations: [
     AccountComponent,

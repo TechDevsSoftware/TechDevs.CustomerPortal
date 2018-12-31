@@ -8,6 +8,8 @@ import { MomentModule } from 'ngx-moment';
 import { CoreModule } from '../core/core.module';
 import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material';
+import { VehicleCardComponent } from './components/vehicle-card/vehicle-card.component';
+import { MotCardComponent } from './components/mot-card/mot-card.component';
 
 @NgModule({
   imports: [
@@ -18,10 +20,16 @@ import { MatButtonModule } from '@angular/material';
     SharedModule,
     MatButtonModule
   ],
+  exports: [
+    VehicleCardComponent,
+    MotCardComponent
+  ],
   declarations: [
     VehicleDetailsComponent,
     VehcilesListComponent,
-    VehicleLookupComponent
+    VehicleLookupComponent,
+    VehicleCardComponent,
+    MotCardComponent
   ]
 })
 export class MyVehiclesModule { }

@@ -2,7 +2,7 @@
 
   <div class="profile-banner">
     <div class="img-container">
-      <img [src]="client?.clientTheme?.logoPath" class="profile-image">
+      <img *ngIf="client" [src]="client?.clientTheme?.logoPath" class="profile-image">
     </div>
   </div>
 

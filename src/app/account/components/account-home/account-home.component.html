@@ -1,3 +1,17 @@
 <div class="page-body">
-    <h3>My Home Page!</h3>
-</div>
+        <h3>Hello, {{profile?.firstName}}</h3>
+    
+        <p class="text-light">
+            Welcome to your feed, here you will find useful information about your car and exclusive offers for you.
+        </p>
+        
+
+        
+        <app-mot-card *ngFor="let car of expiringMOTVehicles" [vehicle]="car">
+        </app-mot-card>
+        
+        <app-vehicle-card *ngFor="let car of profile?.customerData?.myVehicles" [vehicle]="car" [showButtons]="false" (onDeleted)="loadData()">
+        </app-vehicle-card>
+        
+
+    </div>

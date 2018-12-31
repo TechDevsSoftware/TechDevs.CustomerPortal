@@ -1,0 +1,32 @@
+<div class="car-card">
+    
+    <div class="title">
+      <span class="reg">{{vehicle.registration}}</span>
+      <span class="flex-grow">{{vehicle.make}} {{vehicle.model}}</span>
+      <span *ngIf="showDelete" class="fa fa-trash fa-2x delete-button" (click)="deleteVehicle(vehicle.registration)"></span>
+    </div>
+    
+    <div class="labels">
+      
+      <div class="label">
+        <i class="label-icon label-icon-green">
+          <img src="assets/images/MOT.png">
+        </i>
+        <span class="label-text label-text-green">MOT due <strong>{{vehicle?.motExpiryDate| amDateFormat:'LL'}}</strong>
+        </span>
+      </div>
+      
+      <div class="label">
+        <i class="label-icon fa fa-wrench label-icon-red"></i>
+        <span class="label-text label-text-red">Service due 1st January 2019</span>
+      </div>
+      
+    </div>
+    
+    <div class="buttons" *ngIf="showButtons">
+      <a (click)="bookMOT()">Book MOT</a>
+      <span>|</span>
+      <a (click)="bookService()">Book Service</a>
+    </div>
+    
+  </div>

@@ -1,0 +1,21 @@
+<div class="mot-card">
+
+  <div class="labels">
+    <div class="label">
+      <i class="label-icon" [ngClass]="{'label-icon-red': monthsDiff < 0, 'label-icon-green': monthsDiff >= 0}">
+        <img src="assets/images/MOT.png">
+      </i>
+    </div>
+  </div>
+
+  <div class="title">
+    <span class="flex-grow" *ngIf="monthsDiff < 0">Your MOT is overdue!</span>
+    <span class="flex-grow" *ngIf="monthsDiff >= 0">Your MOT is due {{vehicle?.motExpiryDate | amTimeAgo}}</span>
+    <span class="flex-grow text-light">{{vehicle.make}} {{vehicle.model}} - {{vehicle.registration}}</span>
+  </div>
+
+  <div class="button-container">
+    <button mat-button color="primary" (click)="bookMOT()">BOOK NOW</button>
+  </div>
+
+</div>
