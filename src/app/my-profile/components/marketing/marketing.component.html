@@ -1,0 +1,39 @@
+<page-header title="Marketing Preferences"></page-header>
+<div class="page-body">
+
+  <form *ngIf="profile?.customerData?.marketingPreferences">
+
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle name="email" [(ngModel)]="profile?.customerData?.marketingPreferences.email"></mat-slide-toggle>
+        <span>Email</span>
+      </div>
+    </div>
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle name="phone" [(ngModel)]="profile?.customerData?.marketingPreferences.phone"></mat-slide-toggle>
+        <span>Phone</span>
+      </div>
+    </div>
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle name="sms" [(ngModel)]="profile?.customerData?.marketingPreferences.sms"></mat-slide-toggle>
+        <span>SMS</span>
+      </div>
+    </div>
+    <div class="toggle-group">
+      <div class="toggle">
+        <mat-slide-toggle name="post" [(ngModel)]="profile?.customerData?.marketingPreferences.post"></mat-slide-toggle>
+        <span>Post</span>
+      </div>
+    </div>
+
+    <p class="text-light">By enableing marketing I consent to NMJ contacting me me for direct marketing of NMJ's services, such as promotional campaigns.</p>
+
+    <br>
+
+    <button mat-stroked-button color="primary" class="button button-primary" (click)="save()">Save Changes</button>
+
+  </form>
+
+</div>

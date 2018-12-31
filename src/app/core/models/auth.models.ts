@@ -13,6 +13,7 @@ export class UserProfile {
 export class UserData {
   myVehicles: UserVehicle[];
   notificationPreferences: NotificationPreferences;
+  marketingPreferences: MarketingPeferences;
 }
 
 export class NotificationPreferences {
@@ -22,6 +23,13 @@ export class NotificationPreferences {
   servicePush: boolean;
   offersEmail: boolean;
   offersPush: boolean;
+}
+
+export class MarketingPeferences {
+  sms: boolean;
+  email: boolean;
+  phone: boolean;
+  post: boolean;
 }
 
 export class UserVehicle {

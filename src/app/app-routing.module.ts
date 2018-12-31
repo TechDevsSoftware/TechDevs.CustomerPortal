@@ -15,6 +15,7 @@ import { AccountHomeComponent } from './account/components/account-home/account-
 import { ProfileMenuComponent } from './my-profile/components/profile-menu/profile-menu.component';
 import { WipModuleComponent } from './account/components/wip-module/wip-module.component';
 import { NotificationsComponent } from './my-profile/components/notifications/notifications.component';
+import { MarketingComponent } from './my-profile/components/marketing/marketing.component';
 
 const routes: Routes = [
   { path: 'invalid-client', component: InvalidClientComponent },
@@ -35,7 +36,8 @@ const routes: Routes = [
           { path: 'profile', component: ProfileMenuComponent },
           { path: 'profile/edit', component: EditProfileComponent },
           { path: 'profile/delete', component: DeleteProfileComponent },
-          { path: 'profile/notifications', component: NotificationsComponent }
+          { path: 'profile/notifications', component: NotificationsComponent },
+          { path: 'profile/marketing', component: MarketingComponent }
         ]
       },
       { path: "policy/privacy", component: PrivacyPolicyComponent }

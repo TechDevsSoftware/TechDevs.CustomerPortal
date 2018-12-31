@@ -31,20 +31,6 @@
 
     <br>
 
-    <h5>Offers</h5>
-    <div class="toggle-group">
-      <div class="toggle">
-        <mat-slide-toggle class="example-margin" name="offersPush" [(ngModel)]="profile?.customerData?.notificationPreferences.offersPush"></mat-slide-toggle>
-        <span>Push Notifications</span>
-      </div>
-      <div class="toggle">
-        <mat-slide-toggle class="example-margin" name="offersEmail" [(ngModel)]="profile?.customerData?.notificationPreferences.offersEmail"></mat-slide-toggle>
-        <span>Email</span>
-      </div>
-    </div>
-
-    <br>
-
     <button mat-stroked-button color="primary" class="button button-primary" (click)="save()">Save Changes</button>
 
   </form>

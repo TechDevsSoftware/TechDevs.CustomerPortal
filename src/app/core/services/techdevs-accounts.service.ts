@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { UserProfile, UserRegistration, NotificationPreferences } from '../models/auth.models';
+import { UserProfile, UserRegistration, NotificationPreferences, MarketingPeferences } from '../models/auth.models';
 import { environment } from '../../../environments/environment';
 
 export class LoginRequest {
@@ -49,7 +49,11 @@ export class TechDevsAccountsService {
   }
 
   async updateNotificationPreferences(notificationPreferences: NotificationPreferences): Promise<UserProfile> {
-    return this.httpClient.post<UserProfile>(`${environment.accountServer}/api/v1/customer/account/notificationpreferences`, notificationPreferences, {}).toPromise();
+    return this.httpClient.post<UserProfile>(`${environment.accountServer}/api/v1/customer/account/preferences/notifications`, notificationPreferences, {}).toPromise();
+  }
+
+  async updateMarketingPreferences(marketingPeferences: MarketingPeferences): Promise<UserProfile> {
+    return this.httpClient.post<UserProfile>(`${environment.accountServer}/api/v1/customer/account/preferences/marketing`, marketingPeferences, {}).toPromise();
   }
 
 }

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { MatSlideToggleModule, MatInputModule, MatButtonModule } from "@angular/material";
+import { MarketingComponent } from './components/marketing/marketing.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { MatSlideToggleModule, MatInputModule, MatButtonModule } from "@angular/
     MatInputModule,
     MatButtonModule
   ],
-  declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent, NotificationsComponent]
+  declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent, NotificationsComponent, MarketingComponent]
 })
 export class MyProfileModule { }
