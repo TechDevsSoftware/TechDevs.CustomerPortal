@@ -33,13 +33,13 @@
     text-align: left;
 }
 
-.search-container {
-    display: flex;
+// .search-container {
+//     display: flex;
 
-    button {
-        margin-left: 10px;
-    }
-}
+//     button {
+//         margin-left: 10px;
+//     }
+// }
 
 .buttons {
     margin-top: 30px;
@@ -101,4 +101,9 @@
     font-weight: 900;
     text-transform: uppercase;
     max-height: 34px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row-reverse;
 }
