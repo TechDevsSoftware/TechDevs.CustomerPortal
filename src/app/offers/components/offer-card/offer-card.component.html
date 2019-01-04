@@ -1,5 +1,6 @@
 <div class="offer-card" *ngIf="offer">
   <img [src]="offer.imageSrc" class="offer-image">
+  <span *ngIf="offer?.badge" class="offer-badge">{{offer?.badge}}</span>
     <div class="offer-body">
       <span class="offer-title">{{offer?.title}}</span>
       <span class="offer-description" *ngIf="offer?.description">{{offer?.description}}</span>

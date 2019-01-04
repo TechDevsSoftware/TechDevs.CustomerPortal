@@ -17,6 +17,7 @@ import { WipModuleComponent } from './account/components/wip-module/wip-module.c
 import { NotificationsComponent } from './my-profile/components/notifications/notifications.component';
 import { MarketingComponent } from './my-profile/components/marketing/marketing.component';
 import { OfferListComponent } from './offers/components/offer-list/offer-list.component';
+import { TestComponent } from './my-profile/components/test/test.component';
 
 const routes: Routes = [
   { path: 'invalid-client', component: InvalidClientComponent },
@@ -38,7 +39,7 @@ const routes: Routes = [
           { path: 'profile/edit', component: EditProfileComponent },
           { path: 'profile/delete', component: DeleteProfileComponent },
           { path: 'profile/notifications', component: NotificationsComponent },
-          { path: 'profile/marketing', component: MarketingComponent }
+          { path: 'profile/marketing', component: MarketingComponent },
         ]
       },
       { path: "policy/privacy", component: PrivacyPolicyComponent }

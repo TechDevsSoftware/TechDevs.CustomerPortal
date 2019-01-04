@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { MatSlideToggleModule, MatInputModule, MatButtonModule } from "@angular/material";
 import { MarketingComponent } from './components/marketing/marketing.component';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { MarketingComponent } from './components/marketing/marketing.component';
     MatInputModule,
     MatButtonModule
   ],
-  declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent, NotificationsComponent, MarketingComponent]
+  declarations: [EditProfileComponent, DeleteProfileComponent, ProfileMenuComponent, NotificationsComponent, MarketingComponent, TestComponent]
 })
 export class MyProfileModule { }
