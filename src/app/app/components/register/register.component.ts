@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    await this.customerService.RegisterUser(this.reg);
+    await this.customerService.RegisterUser(this.reg).toPromise();
     await this.authService.loginWithEmail(this.reg.emailAddress, this.reg.password);
   }
 
