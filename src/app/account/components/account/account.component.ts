@@ -22,8 +22,21 @@ export class AccountComponent implements OnInit {
     private clientService: ClientService,
     public route: ActivatedRoute,
     private menuTitleService: MenuTitleService
-  ) { 
+  ) {
     this.menuTitleService.title$.subscribe((title: string) => this.title = title);
+
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("profile-banner").style.display = "none";
+        document.getElementById("profile-nav-menu").style.top = "0";
+      } else {
+        document.getElementById("profile-banner").style.display = "flex";
+        document.getElementById("profile-nav-menu").style.top = "50px";
+      }
+    }
   }
 
   async ngOnInit() {
