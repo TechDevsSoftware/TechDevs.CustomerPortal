@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserRegistration, Client } from '../../../core/models/auth.models';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
-import { ClientService } from '../../../core/services/techdevs-client.service';
 import { RouterNavService } from '../../../core/services/router-nav.service';
+import { AuthUserRegistration, Client } from '../../../api/models';
+import { CustomerService, ClientService } from '../../../api/services';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +11,16 @@ import { RouterNavService } from '../../../core/services/router-nav.service';
 })
 export class RegisterComponent implements OnInit {
 
-  reg: UserRegistration;
+  reg: AuthUserRegistration = {};
   confirmPassword: string;
   errMessage: string;
   client: Client;
 
   constructor(
-    private accountsService: TechDevsAccountsService,
     private authService: TechDevsAuthService,
+    private routerNav: RouterNavService,
     private clientService: ClientService,
-    private routerNav: RouterNavService
+    private customerService: CustomerService
   ) { }
 
   async ngOnInit() {
@@ -30,12 +29,11 @@ export class RegisterComponent implements OnInit {
   }
 
   async loadData() {
-      this.client = await this.clientService.getClient();
+    this.client = await this.clientService.GetCurrentClient().toPromise();
   }
 
   resetRegistration() {
-    this.reg = new UserRegistration();
-    this.reg.provider = "TechDevs";
+    this.reg.providerName = "TechDevs";
   }
 
   get passwordsMatch() {
@@ -43,15 +41,8 @@ export class RegisterComponent implements OnInit {
   }
 
   async register() {
-    // First register the account
-    console.log("Registration request", this.reg);
-    const result = await this.accountsService.registerNewUser(this.reg);
-    console.log("Registration result", result);
-    if (result == "Success") {
-      await this.authService.loginWithEmail(this.reg.emailAddress, this.reg.password);
-    } else {
-      this.errMessage = result;
-    }
+    await this.customerService.RegisterUser(this.reg);
+    await this.authService.loginWithEmail(this.reg.emailAddress, this.reg.password);
   }
 
   privacy() {

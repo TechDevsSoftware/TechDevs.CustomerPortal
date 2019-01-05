@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile, UserVehicle } from '../../../core/models/auth.models';
 import { RouterNavService } from '../../../core/services/router-nav.service';
 import { Modal } from 'ngx-modialog/plugins/js-native';
 import { MenuTitleService } from '../../../core/services/menu-title.service';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
+import { AuthUserProfile } from '../../../api/models';
+import { CustomerService } from '../../../api/services';
+import { CustomerData } from '../../../api/models/customer-data';
+import { CustomerProfile } from '../../../api/models/customer-profile';
 
 @Component({
   selector: 'app-my-cars-list',
@@ -12,15 +14,15 @@ import { TechDevsAccountsService } from '../../../core/services/techdevs-account
 })
 export class VehcilesListComponent implements OnInit {
 
-  profile: UserProfile;
-  cars: UserVehicle[] = [];
+  profile: CustomerProfile;
+  customerData: CustomerData;
 
   constructor(
     private routerNav: RouterNavService,
     public modal: Modal,
     private menuTitleService: MenuTitleService,
-    private accountService: TechDevsAccountsService
-  ) { 
+    private customerService: CustomerService
+  ) {
     this.menuTitleService.updateTitle("My Cars");
   }
 
@@ -29,17 +31,11 @@ export class VehcilesListComponent implements OnInit {
   }
 
   async loadData() {
-    this.profile = await this.accountService.getUserProfile();
-    if (this.profile.customerData && this.profile.customerData.myVehicles) {
-      this.cars = this.profile.customerData.myVehicles;
-    }
-    console.log(this.profile);
+    this.profile = await this.customerService.GetProfile().toPromise();
   }
 
-  
+
   addVehicle() {
     this.routerNav.navigate(['account', 'cars', 'add']);
   }
-
-
 }

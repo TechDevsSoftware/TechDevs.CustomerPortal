@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
-import { UserProfile } from '../../../core/models/auth.models';
 import { RouterNavService } from '../../../core/services/router-nav.service';
 import { MenuTitleService } from '../../../core/services/menu-title.service';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
+import { CustomerService } from '../../../api/services';
+import { CustomerProfile } from '../../../api/models/customer-profile';
 
 @Component({
   selector: 'app-edit-profile',
@@ -12,13 +11,13 @@ import { TechDevsAccountsService } from '../../../core/services/techdevs-account
 })
 export class EditProfileComponent implements OnInit {
 
-  profile: UserProfile;
+  profile: CustomerProfile;
 
   constructor(
     private routerNav: RouterNavService,
     private menuTitleService: MenuTitleService,
-    private accountService: TechDevsAccountsService
-  ) { 
+    private accountService: CustomerService
+  ) {
     this.menuTitleService.updateTitle("My Profile");
   }
 
@@ -27,7 +26,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   async loadData() {
-    this.profile = await this.accountService.getUserProfile();
+    this.profile = await this.accountService.GetProfile().toPromise();
   }
 
   privacy() {
@@ -37,9 +36,8 @@ export class EditProfileComponent implements OnInit {
   async save() {
     const profileToUpdate = Object.assign(this.profile);
     console.log(profileToUpdate);
-    this.profile = await this.accountService.setName(profileToUpdate.firstName, profileToUpdate.lastName);
-    this.profile = await this.accountService.setContactDetails(profileToUpdate.contactNumber);
-    // console.log("Saved Profile");
+    this.profile = await this.accountService.UpdateAccountName({ firstName: profileToUpdate.firstName, lastName: profileToUpdate.lastName }).toPromise();
+    this.profile = await this.accountService.UpdateAccountContactDetails(profileToUpdate.contactNumber).toPromise();
   }
 
   deleteProfile() {

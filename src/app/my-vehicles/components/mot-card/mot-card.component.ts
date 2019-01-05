@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserVehicle } from '../../../core/models/auth.models';
 import * as moment from 'moment';
+import { CustomerVehicle } from '../../../api/models';
 
 @Component({
   selector: 'app-mot-card',
@@ -9,7 +9,7 @@ import * as moment from 'moment';
 })
 export class MotCardComponent implements OnInit {
 
-  @Input() vehicle: UserVehicle;
+  @Input() vehicle: CustomerVehicle;
 
   constructor() { }
 

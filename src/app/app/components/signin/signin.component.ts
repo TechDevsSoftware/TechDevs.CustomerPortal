@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, ElementRef, Inject, Renderer2 } from '@angular/core';
-import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
+import { Component, OnInit, Inject } from '@angular/core';
 import { RouterNavService } from '../../../core/services/router-nav.service';
-import { ClientService } from '../../../core/services/techdevs-client.service';
-import { Client } from '../../../core/models/auth.models';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { _document } from '@angular/platform-browser/src/browser';
+import { ClientService } from '../../../api/services';
+import { Client } from '../../../api/models';
+import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +14,6 @@ import { _document } from '@angular/platform-browser/src/browser';
 })
 export class SigninComponent implements OnInit {
 
-  @Inject(DOCUMENT) private _document: any
 
   email: string;
   password: string;
@@ -22,10 +21,10 @@ export class SigninComponent implements OnInit {
   client: Client;
 
   constructor(
-    private authService: TechDevsAuthService,
     private nav: RouterNavService,
     private clientService: ClientService,
     private router: Router,
+    private authService: TechDevsAuthService
   ) { }
 
 
@@ -40,7 +39,7 @@ export class SigninComponent implements OnInit {
   }
 
   async loadClientData() {
-    this.client = await this.clientService.getClient();
+    this.client = await this.clientService.GetCurrentClient().toPromise();
   }
 
   async login() {

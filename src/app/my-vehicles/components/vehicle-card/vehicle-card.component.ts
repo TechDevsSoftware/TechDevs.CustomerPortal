@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserVehicle } from '../../../core/models/auth.models';
-import { VehicleService } from '../../../core/services/techdevs-vehicle.service';
 import { Overlay } from 'ngx-modialog';
 import { Modal } from 'ngx-modialog/plugins/js-native';
+import { CustomerVehicle } from '../../../api/models';
+import { MyVehiclesService } from '../../../api/services';
 
 @Component({
   selector: 'app-vehicle-card',
@@ -11,14 +11,14 @@ import { Modal } from 'ngx-modialog/plugins/js-native';
 })
 export class VehicleCardComponent implements OnInit {
 
-  @Input() vehicle: UserVehicle;
+  @Input() vehicle: CustomerVehicle;
   @Input() showDelete: boolean = false;
   @Input() showButtons: boolean = true;
 
   @Output() onDeleted = new EventEmitter<void>();
 
   constructor(
-    private vehicleService: VehicleService,
+    private vehicleService: MyVehiclesService,
     public modal: Modal
   ) { }
 
@@ -34,7 +34,7 @@ export class VehicleCardComponent implements OnInit {
 
     try {
       await dialogRef.result;
-      await this.vehicleService.deleteVehicle(reg);
+      await this.vehicleService.RemoveVehicle(this.vehicle.registration).toPromise();
       this.onDeleted.emit();
     } catch (error) {
     }

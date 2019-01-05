@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfile, UserVehicle } from '../../../core/models/auth.models';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
 import * as moment from 'moment';
+import { CustomerService } from '../../../api/services';
+import { CustomerProfile } from '../../../api/models/customer-profile';
+import { CustomerVehicle } from '../../../api/models';
 
 @Component({
   selector: 'app-account-home',
@@ -10,10 +11,10 @@ import * as moment from 'moment';
 })
 export class AccountHomeComponent implements OnInit {
 
-  profile: UserProfile;
+  profile: CustomerProfile;
 
   constructor(
-    private accountService: TechDevsAccountsService
+    private accountService: CustomerService
   ) { }
 
   async ngOnInit() {
@@ -21,10 +22,10 @@ export class AccountHomeComponent implements OnInit {
   }
 
   async loadData() {
-    this.profile = await this.accountService.getUserProfile();
+    this.profile = await this.accountService.GetProfile().toPromise();
   }
 
-  get expiringMOTVehicles() : UserVehicle[] {
+  get expiringMOTVehicles() : CustomerVehicle[] {
     if(this.profile && this.profile.customerData && this.profile.customerData.myVehicles) {
       return this.profile.customerData.myVehicles.filter(v => moment(v.motExpiryDate).diff(moment(), 'months') <= 6 );
     }

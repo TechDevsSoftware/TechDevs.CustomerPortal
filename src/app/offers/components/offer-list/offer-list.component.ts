@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Client } from '../../../core/models/auth.models';
-import { ClientService } from '../../../core/services/techdevs-client.service';
+import { Client } from '../../../api/models';
+import { ClientService } from '../../../api/services';
 
 @Component({
   selector: 'app-offer-list',
@@ -21,7 +21,7 @@ export class OfferListComponent implements OnInit {
   }
 
   async loadData() {
-    this.client = await this.clientService.getClient();
+    this.client = await this.clientService.GetCurrentClient().toPromise();
   }
 
 }

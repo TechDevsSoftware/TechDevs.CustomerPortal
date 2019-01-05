@@ -40,6 +40,7 @@ const routes: Routes = [
           { path: 'profile/delete', component: DeleteProfileComponent },
           { path: 'profile/notifications', component: NotificationsComponent },
           { path: 'profile/marketing', component: MarketingComponent },
+          { path: 'profile/test', component: TestComponent },
         ]
       },
       { path: "policy/privacy", component: PrivacyPolicyComponent }

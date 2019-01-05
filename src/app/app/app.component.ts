@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TechDevsAuthService } from '../core/services/techdevs-auth.service';
 import { Spinkit } from 'ng-http-loader';
-import { ClientService } from '../core/services/techdevs-client.service';
-import { Client } from '../core/models/auth.models';
+import { ClientService } from '../api/services';
+import { Client } from '../api/models';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +27,7 @@ export class AppComponent implements OnInit {
   }
 
   async loadClientData() {
-    this.client = await this.clientService.getClient();
+    this.client = await this.clientService.GetCurrentClient().toPromise();
   }
 
   updateClientStyling() {

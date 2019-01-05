@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Client, BasicOffer } from '../../../core/models/auth.models';
+import { BasicOffer } from '../../../api/models';
 
 @Component({
   selector: 'app-offer-card',

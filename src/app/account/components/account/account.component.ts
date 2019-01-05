@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
-import { UserProfile, Client } from '../../../core/models/auth.models';
-import { ClientService } from '../../../core/services/techdevs-client.service';
 import { ActivatedRoute } from '@angular/router';
 import { MenuTitleService } from '../../../core/services/menu-title.service';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
+import { CustomerService, ClientService } from '../../../api/services';
+import { CustomerProfile } from '../../../api/models/customer-profile';
+import { Client } from '../../../api/models';
 
 @Component({
   templateUrl: './account.component.html',
@@ -12,13 +12,13 @@ import { TechDevsAccountsService } from '../../../core/services/techdevs-account
 })
 export class AccountComponent implements OnInit {
 
-  profile: UserProfile;
+  profile: CustomerProfile;
   client: Client;
   title: string;
 
   constructor(
     private authService: TechDevsAuthService,
-    private accountService: TechDevsAccountsService,
+    private accountService: CustomerService,
     private clientService: ClientService,
     public route: ActivatedRoute,
     private menuTitleService: MenuTitleService
@@ -27,8 +27,8 @@ export class AccountComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.client = await this.clientService.getClient();
-    this.profile = await this.accountService.getUserProfile();
+    this.client = await this.clientService.GetCurrentClient().toPromise();
+    this.profile = await this.accountService.GetProfile().toPromise();
     console.log("User profile", this.profile);
     console.log("Route", this.route);
   }

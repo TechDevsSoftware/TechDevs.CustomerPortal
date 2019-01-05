@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
-import { UserProfile, NotificationPreferences } from '../../../core/models/auth.models';
+import { CustomerService, CustomerDataService } from '../../../api/services';
+import { CustomerProfile } from '../../../api/models/customer-profile';
 
 @Component({
   selector: 'app-notifications',
@@ -9,10 +9,11 @@ import { UserProfile, NotificationPreferences } from '../../../core/models/auth.
 })
 export class NotificationsComponent implements OnInit {
 
-  profile: UserProfile;
+  profile: CustomerProfile;
 
   constructor(
-    private accountsService: TechDevsAccountsService
+    private accountsService: CustomerService,
+    private customerDataService: CustomerDataService
   ) { }
 
   async ngOnInit() {
@@ -20,12 +21,12 @@ export class NotificationsComponent implements OnInit {
   }
 
   async loadData() {
-    this.profile = await this.accountsService.getUserProfile();
+    this.profile = await this.accountsService.GetProfile().toPromise();
   }
 
   async save() {
-    const result = await this.accountsService.updateNotificationPreferences(this.profile.customerData.notificationPreferences);
-    if(result) {
+    const result = await this.customerDataService.UpdateNotificationPreferences(this.profile.customerData.notificationPreferences).toPromise();
+    if (result) {
       this.profile = result;
     }
   }

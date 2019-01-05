@@ -1,10 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { UserVehicle, UserProfile } from '../../../core/models/auth.models';
-import { VehicleService } from '../../../core/services/techdevs-vehicle.service';
 import { RouterNavService } from '../../../core/services/router-nav.service';
-import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
 import { MenuTitleService } from '../../../core/services/menu-title.service';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
+import { CustomerVehicle } from '../../../api/models';
+import { MyVehiclesService, CustomerService } from '../../../api/services';
+import { CustomerProfile } from '../../../api/models/customer-profile';
 
 @Component({
   selector: 'app-vehicle-lookup',
@@ -14,38 +13,37 @@ import { TechDevsAccountsService } from '../../../core/services/techdevs-account
 export class VehicleLookupComponent implements OnInit {
 
   reg: string;
-  result: UserVehicle;
-  profile: UserProfile;
+  result: CustomerVehicle;
+  profile: CustomerProfile;
   error: boolean;
 
   @Output() onCarAdded = new EventEmitter();
 
   constructor(
-    private vehicleService: VehicleService,
-    private authService: TechDevsAuthService,
+    private vehicleService: MyVehiclesService,
     private routerNav: RouterNavService,
     private menuTitleService: MenuTitleService,
-    private accountService: TechDevsAccountsService
-  ) { 
+    private customerService: CustomerService
+  ) {
     this.menuTitleService.updateTitle("Lookup Vehicle");
   }
 
   async ngOnInit() {
-    this.profile = await this.accountService.getUserProfile();
+    this.profile = await this.customerService.GetProfile().toPromise();
   }
 
   async search() {
-    if(this.canAdd) {
+    if (this.canAdd) {
       try {
-        this.result = await this.vehicleService.searchByReg(this.reg);
+        this.result = await this.vehicleService.LookupVehicle(this.reg).toPromise();
       } catch (error) {
-        this.error = true;; 
+        this.error = true;;
       }
     }
   }
 
   async addToMyCars() {
-    await this.vehicleService.addVehicle(this.result);
+    await this.vehicleService.AddVehicle(this.result).toPromise();
     this.onCarAdded.emit();
     this.result = null;
     this.reg = null;

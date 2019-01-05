@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Provider, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app/app.component';
@@ -19,9 +19,12 @@ import { SigninComponent } from './app/components/signin/signin.component';
 import { RegisterComponent } from './app/components/register/register.component';
 import { InvalidClientComponent } from './app/components/invalid-client/invalid-client.component';
 import { MyProfileModule } from './my-profile/my-profile.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatCheckboxModule } from '@angular/material';
 import { OffersModule } from './offers/offers.module';
+import { ApiConfiguration } from './api/api-configuration';
+import { environment } from '../environments/environment';
+import { ApiModule } from "./api/api.module";
 
 let config = new AuthServiceConfig([
   {
@@ -33,6 +36,18 @@ let config = new AuthServiceConfig([
 export function provideConfig() {
   return config;
 }
+
+export function initApiConfiguration(config: ApiConfiguration): Function {
+  return () => {
+    config.rootUrl = environment.accountServer;
+  };
+}
+export const INIT_API_CONFIGURATION: Provider = {
+  provide: APP_INITIALIZER,
+  useFactory: initApiConfiguration,
+  deps: [ApiConfiguration],
+  multi: true
+};
 
 @NgModule({
   declarations: [
@@ -47,6 +62,7 @@ export function provideConfig() {
     PolicyModule,
     MyVehiclesModule,
     RouterModule.forRoot([]),
+    ApiModule,
     CoreModule,
     SocialLoginModule,
     FormsModule,
@@ -72,7 +88,8 @@ export function provideConfig() {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    INIT_API_CONFIGURATION
   ],
   bootstrap: [AppComponent]
 })

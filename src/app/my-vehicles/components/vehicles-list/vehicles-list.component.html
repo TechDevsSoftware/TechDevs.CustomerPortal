@@ -1,6 +1,6 @@
 <div class="page-body">
 
-  <app-vehicle-card *ngFor="let car of cars" [vehicle]="car" [showDelete]="true" (onDeleted)="loadData()">
+  <app-vehicle-card *ngFor="let car of profile?.customerData?.myVehicles" [vehicle]="car" [showDelete]="true" (onDeleted)="loadData()">
   </app-vehicle-card>
   
   <span class="add-vehicle" (click)="addVehicle()"> <i class="fa fa-plus"></i> Add Vehicle</span>

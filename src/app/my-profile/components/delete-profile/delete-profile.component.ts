@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuTitleService } from '../../../core/services/menu-title.service';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
 import { TechDevsAuthService } from '../../../core/services/techdevs-auth.service';
 import { RouterNavService } from '../../../core/services/router-nav.service';
+import { CustomerService } from '../../../api/services';
 
 @Component({
   selector: 'app-delete-profile',
@@ -13,7 +13,7 @@ export class DeleteProfileComponent implements OnInit {
 
   constructor(
     private menuTitle: MenuTitleService,
-    private accountService: TechDevsAccountsService,
+    private accountService: CustomerService,
     private authService: TechDevsAuthService,
     private routerNav: RouterNavService
   ) { 
@@ -24,7 +24,7 @@ export class DeleteProfileComponent implements OnInit {
   }
 
   async delete() {
-    await this.accountService.deleteUserProfile();
+    await this.accountService.DeleteAccount().toPromise();
     this.authService.logout();
   }
 

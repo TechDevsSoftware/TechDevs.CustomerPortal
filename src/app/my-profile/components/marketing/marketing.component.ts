@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TechDevsAccountsService } from '../../../core/services/techdevs-accounts.service';
-import { UserProfile } from '../../../core/models/auth.models';
+import { CustomerProfile } from '../../../api/models/customer-profile';
+import { CustomerService, CustomerDataService } from '../../../api/services';
 
 @Component({
   selector: 'app-marketing',
@@ -9,10 +9,11 @@ import { UserProfile } from '../../../core/models/auth.models';
 })
 export class MarketingComponent implements OnInit {
 
-  profile: UserProfile;
+  profile: CustomerProfile;
 
   constructor(
-    private accountService: TechDevsAccountsService
+    private accountService: CustomerService,
+    private customerDataService: CustomerDataService
   ) { }
 
   async ngOnInit() {
@@ -20,11 +21,11 @@ export class MarketingComponent implements OnInit {
   }
 
   async loadData() {
-    this.profile = await this.accountService.getUserProfile();
+    this.profile = await this.accountService.GetProfile().toPromise();
   }
 
   async save() {
-    this.profile = await this.accountService.updateMarketingPreferences(this.profile.customerData.marketingPreferences);
+    this.profile = await this.customerDataService.UpdateMarketingPreferences(this.profile.customerData.marketingPreferences).toPromise();
   }
 
 }
